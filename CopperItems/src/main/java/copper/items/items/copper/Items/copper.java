@@ -6,7 +6,7 @@ public final class copper extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        spigot.items.spigot.items.Spigot.Items.init();
+        Items.init();
         // Plugin startup logic
 
     }
