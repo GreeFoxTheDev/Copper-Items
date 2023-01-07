@@ -1,0 +1,6 @@
+name: Copper Items
+version: '${project.version}'
+main: copper.items.items.copper.Items.copper
+api-version: 1.19
+authors: [ GreeFox ]
+description: Adds craftable copper items!
