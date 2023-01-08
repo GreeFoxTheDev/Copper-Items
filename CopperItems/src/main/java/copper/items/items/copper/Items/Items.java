@@ -63,7 +63,7 @@ public class Items extends JavaPlugin {
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, speed);
         item.setDurability((short) 450);
         item.setItemMeta(im);
-        copperSword = item;
+        copperAxe = item;
 
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_sword"), item);
         sr.shape("XX ",
