@@ -157,11 +157,14 @@ public class Items extends JavaPlugin {
     }
     public static ItemStack copperChestplate;
     private static void createCopperChestplate(){
-        ItemStack item = new ItemStack(Material.CHAINMAIL_CHESTPLATE, 1);
+        ItemStack item = new ItemStack(Material.IRON_CHESTPLATE, 1);
         ItemMeta im = item.getItemMeta();
         im.setDisplayName("§fCopper Chestplate");
         im.setCustomModelData(1);
         item.setItemMeta(im);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor",
+                5, Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        im.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
         copperChestplate = item;
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_chestplate"), item);
         sr.shape("X X",
@@ -172,10 +175,13 @@ public class Items extends JavaPlugin {
     }
     public static ItemStack copperLeggings;
     private static void createCopperLeggings(){
-        ItemStack item = new ItemStack(Material.CHAINMAIL_LEGGINGS, 1);
+        ItemStack item = new ItemStack(Material.IRON_LEGGINGS, 1);
         ItemMeta im = item.getItemMeta();
         im.setDisplayName("§fCopper Leggings");
         im.setCustomModelData(1);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor",
+                4, Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        im.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
         item.setItemMeta(im);
         copperLeggings = item;
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_leggings"), item);
