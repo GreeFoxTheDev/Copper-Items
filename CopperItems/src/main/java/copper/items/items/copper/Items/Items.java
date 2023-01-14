@@ -20,6 +20,9 @@ public class Items extends JavaPlugin {
         createCopperSword();
         createCopperAxe();
         createCopperPickaxe();
+        createCopperShovel();
+        createCopperHoe();
+
         createCopperHelmet();
         createCopperChestplate();
         createCopperLeggings();
@@ -76,7 +79,6 @@ public class Items extends JavaPlugin {
         AttributeModifier speed = new AttributeModifier(UUID.randomUUID(),
                 "generic.attackSpeed", -3.0, Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, speed);
-        //im.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         item.setDurability((short) 450);
         im.setCustomModelData(1);
         item.setItemMeta(im);
@@ -104,8 +106,8 @@ public class Items extends JavaPlugin {
 
         ShapedRecipe sr4 = new ShapedRecipe(NamespacedKey.minecraft("copper_axe4"), item);
         sr4.shape("XX ",
-                  "YX",
-                  "Y");
+                  "YX ",
+                  "Y  ");
         sr4.setIngredient('X', Material.COPPER_INGOT);
         sr4.setIngredient('Y', Material.STICK);
         Bukkit.getServer().addRecipe(sr);
@@ -213,26 +215,68 @@ public class Items extends JavaPlugin {
         item.setItemMeta(im);
         copperBoots = item;
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_shovel"), item);
-        sr.shape(" X ", " X ", " Y ");
+        sr.shape(" X ",
+                " Y ",
+                " Y ");
         sr.setIngredient('X', Material.COPPER_INGOT);
         sr.setIngredient('Y', Material.STICK);
 
         ShapedRecipe sr2 = new ShapedRecipe(NamespacedKey.minecraft("copper_shovel2"), item);
-        sr2.shape("X  ", "X  ", "Y  ");
+        sr2.shape("X  ",
+                "Y  ",
+                "Y  ");
         sr2.setIngredient('X', Material.COPPER_INGOT);
         sr2.setIngredient('Y', Material.STICK);
 
         ShapedRecipe sr3 = new ShapedRecipe(NamespacedKey.minecraft("copper_shovel3"), item);
-        sr3.shape("  X", "  X", "  Y");
+        sr3.shape("  X",
+                "  Y",
+                "  Y");
         sr3.setIngredient('X', Material.COPPER_INGOT);
         sr3.setIngredient('Y', Material.STICK);
         Bukkit.getServer().addRecipe(sr);
         Bukkit.getServer().addRecipe(sr2);
         Bukkit.getServer().addRecipe(sr3);
     }
-    //public static PotionEffect copperPotion;
-    //private static void createCopperPotion(){
-    //    PotionEffect potionEffect = new PotionEffect(PotionEffectType.WITHER, 10, 2, true, true, true)
-    //}
+    public static ItemStack copperHoe;
+    private static void createCopperHoe(){
+        ItemStack item = new ItemStack(Material.STONE_HOE, 1);
+        ItemMeta im = item.getItemMeta();
+        im.setDisplayName("§fCopper Hoe");
+        im.setCustomModelData(1);
+        item.setItemMeta(im);
+        copperHoe = item;
+        ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_hoe"), item);
+        sr.shape(" XX",
+                " Y ",
+                " Y ");
+        sr.setIngredient('X', Material.COPPER_INGOT);
+        sr.setIngredient('Y', Material.STICK);
 
+        ShapedRecipe sr2 = new ShapedRecipe(NamespacedKey.minecraft("copper_hoe2"), item);
+        sr2.shape("XX ",
+                " Y ",
+                " Y ");
+        sr2.setIngredient('X', Material.COPPER_INGOT);
+        sr2.setIngredient('Y', Material.STICK);
+
+        ShapedRecipe sr3 = new ShapedRecipe(NamespacedKey.minecraft("copper_hoe3"), item);
+        sr3.shape(" XX",
+                "  Y",
+                "  Y");
+        sr3.setIngredient('X', Material.COPPER_INGOT);
+        sr3.setIngredient('Y', Material.STICK);
+
+        ShapedRecipe sr4 = new ShapedRecipe(NamespacedKey.minecraft("copper_hoe4"), item);
+        sr4.shape("XX ",
+                "Y  ",
+                "Y  ");
+        sr4.setIngredient('X', Material.COPPER_INGOT);
+        sr4.setIngredient('Y', Material.STICK);
+        Bukkit.getServer().addRecipe(sr);
+        Bukkit.getServer().addRecipe(sr2);
+        Bukkit.getServer().addRecipe(sr3);
+        Bukkit.getServer().addRecipe(sr4);
+
+    }
 }
