@@ -20,6 +20,16 @@ import java.util.UUID;
 
 public class Items extends JavaPlugin {
 
+    public static ItemStack copperSword;
+    public static ItemStack copperAxe;
+    public static ItemStack copperPickaxe;
+    public static ItemStack copperHelmet;
+    public static ItemStack copperChestplate;
+    public static ItemStack copperLeggings;
+    public static ItemStack copperBoots;
+    public static ItemStack copperShovel;
+    public static ItemStack copperHoe;
+
     public static void init() {
         createCopperSword();
         createCopperAxe();
@@ -32,8 +42,8 @@ public class Items extends JavaPlugin {
         createCopperLeggings();
         createCopperBoots();
     }
-    public static ItemStack copperSword;
-    private static void createCopperSword(){
+
+    private static void createCopperSword() {
         ItemStack item = new ItemStack(Material.IRON_SWORD, 1);
         ItemMeta im = item.getItemMeta();
         im.setDisplayName("§fCopper Sword");
@@ -45,11 +55,9 @@ public class Items extends JavaPlugin {
         lore.add(ChatColor.DARK_GREEN + " 6.5 Attack Damage");
         lore.add(ChatColor.DARK_GREEN + " 1.5 Attack Speed");
         im.setLore(lore);
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed",
-                6.5, Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", 6.5, Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
-        AttributeModifier speed = new AttributeModifier(UUID.randomUUID(),
-                "generic.attackSpeed", -2.3, Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier speed = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", -2.3, Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, speed);
         item.setDurability((short) 450);
         im.setCustomModelData(1);
@@ -57,31 +65,25 @@ public class Items extends JavaPlugin {
         copperSword = item;
 
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_sword"), item);
-        sr.shape(" X ",
-                " X ",
-                " Y ");
+        sr.shape(" X ", " X ", " Y ");
         sr.setIngredient('X', Material.COPPER_INGOT);
         sr.setIngredient('Y', Material.STICK);
 
         ShapedRecipe sr2 = new ShapedRecipe(NamespacedKey.minecraft("copper_sword2"), item);
-        sr2.shape("X  ",
-                "X  ",
-                "Y  ");
+        sr2.shape("X  ", "X  ", "Y  ");
         sr2.setIngredient('X', Material.COPPER_INGOT);
         sr2.setIngredient('Y', Material.STICK);
 
         ShapedRecipe sr3 = new ShapedRecipe(NamespacedKey.minecraft("copper_sword3"), item);
-        sr3.shape("  X",
-                "  X",
-                "  Y");
+        sr3.shape("  X", "  X", "  Y");
         sr3.setIngredient('X', Material.COPPER_INGOT);
         sr3.setIngredient('Y', Material.STICK);
         Bukkit.getServer().addRecipe(sr);
         Bukkit.getServer().addRecipe(sr2);
         Bukkit.getServer().addRecipe(sr3);
     }
-    public static ItemStack copperAxe;
-    private  static void createCopperAxe(){
+
+    private static void createCopperAxe() {
         ItemStack item = new ItemStack(Material.IRON_AXE);
         ItemMeta im = item.getItemMeta();
         im.setDisplayName("§fCopper Axe");
@@ -93,11 +95,9 @@ public class Items extends JavaPlugin {
         lore.add(ChatColor.DARK_GREEN + " 9.5 Attack Damage");
         lore.add(ChatColor.DARK_GREEN + " 0.9 Attack Speed");
         im.setLore(lore);
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage",
-                9.5, Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", 9.5, Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
-        AttributeModifier speed = new AttributeModifier(UUID.randomUUID(),
-                "generic.attackSpeed", -3.0, Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier speed = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", -3.0, Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, speed);
         item.setDurability((short) 450);
         im.setCustomModelData(1);
@@ -105,29 +105,21 @@ public class Items extends JavaPlugin {
         copperAxe = item;
 
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_axe"), item);
-        sr.shape("XX ",
-                 "XY ",
-                 " Y ");
+        sr.shape("XX ", "XY ", " Y ");
         sr.setIngredient('X', Material.COPPER_INGOT);
         sr.setIngredient('Y', Material.STICK);
         ShapedRecipe sr2 = new ShapedRecipe(NamespacedKey.minecraft("copper_axe2"), item);
-        sr2.shape(" XX",
-                  " YX",
-                  " Y ");
+        sr2.shape(" XX", " YX", " Y ");
         sr2.setIngredient('X', Material.COPPER_INGOT);
         sr2.setIngredient('Y', Material.STICK);
 
         ShapedRecipe sr3 = new ShapedRecipe(NamespacedKey.minecraft("copper_axe3"), item);
-        sr3.shape(" XX",
-                  " XY",
-                  "  Y");
+        sr3.shape(" XX", " XY", "  Y");
         sr3.setIngredient('X', Material.COPPER_INGOT);
         sr3.setIngredient('Y', Material.STICK);
 
         ShapedRecipe sr4 = new ShapedRecipe(NamespacedKey.minecraft("copper_axe4"), item);
-        sr4.shape("XX ",
-                  "YX ",
-                  "Y  ");
+        sr4.shape("XX ", "YX ", "Y  ");
         sr4.setIngredient('X', Material.COPPER_INGOT);
         sr4.setIngredient('Y', Material.STICK);
         Bukkit.getServer().addRecipe(sr);
@@ -136,167 +128,144 @@ public class Items extends JavaPlugin {
         Bukkit.getServer().addRecipe(sr4);
 
     }
-    public static ItemStack copperPickaxe;
-    private static void createCopperPickaxe(){
+
+    private static void createCopperPickaxe() {
         ItemStack item = new ItemStack(Material.STONE_PICKAXE, 1);
         ItemMeta im = item.getItemMeta();
         im.setDisplayName("§fCopper Pickaxe");
+        im.setLocalizedName("copper_pickaxe");
         item.setDurability((short) 450);
         im.setCustomModelData(1);
         item.setItemMeta(im);
         copperPickaxe = item;
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_pickaxe"), item);
-        sr.shape("XXX",
-                " Y ",
-                " Y ");
+        sr.shape("XXX", " Y ", " Y ");
         sr.setIngredient('X', Material.COPPER_INGOT);
         sr.setIngredient('Y', Material.STICK);
         Bukkit.getServer().addRecipe(sr);
     }
-    public static ItemStack copperHelmet;
-    private static void createCopperHelmet(){
+
+    private static void createCopperHelmet() {
         ItemStack item = new ItemStack(Material.IRON_HELMET, 1);
         ItemMeta im = item.getItemMeta();
         im.setDisplayName("§fCopper Helmet");
+        im.setLocalizedName("copper_helmet");
         item.setDurability((short) 150);
         im.setCustomModelData(1);
         item.setItemMeta(im);
         copperHelmet = item;
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_helmet"), item);
-        sr.shape("XXX",
-                "X X",
-                "   ");
+        sr.shape("XXX", "X X", "   ");
         sr.setIngredient('X', Material.COPPER_INGOT);
         ShapedRecipe sr2 = new ShapedRecipe(NamespacedKey.minecraft("copper_helmet2"), item);
-        sr2.shape("   ",
-                "XXX",
-                "X X");
+        sr2.shape("   ", "XXX", "X X");
         sr2.setIngredient('X', Material.COPPER_INGOT);
         Bukkit.getServer().addRecipe(sr);
         Bukkit.getServer().addRecipe(sr2);
     }
-    public static ItemStack copperChestplate;
-    private static void createCopperChestplate(){
+
+    private static void createCopperChestplate() {
         ItemStack item = new ItemStack(Material.IRON_CHESTPLATE, 1);
         ItemMeta im = item.getItemMeta();
         im.setDisplayName("§fCopper Chestplate");
+        im.setLocalizedName("copper_chestplate");
         im.setCustomModelData(1);
         item.setItemMeta(im);
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor",
-                5, Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor", 5, Operation.ADD_NUMBER, EquipmentSlot.CHEST);
         im.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
         copperChestplate = item;
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_chestplate"), item);
-        sr.shape("X X",
-                "XXX",
-                "XXX");
+        sr.shape("X X", "XXX", "XXX");
         sr.setIngredient('X', Material.COPPER_INGOT);
         Bukkit.getServer().addRecipe(sr);
     }
-    public static ItemStack copperLeggings;
-    private static void createCopperLeggings(){
+
+    private static void createCopperLeggings() {
         ItemStack item = new ItemStack(Material.IRON_LEGGINGS, 1);
         ItemMeta im = item.getItemMeta();
         im.setDisplayName("§fCopper Leggings");
+        im.setLocalizedName("copper_leggings");
         im.setCustomModelData(1);
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor",
-                4, Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor", 4, Operation.ADD_NUMBER, EquipmentSlot.LEGS);
         im.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
         item.setItemMeta(im);
         copperLeggings = item;
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_leggings"), item);
-        sr.shape("XXX",
-                "X X",
-                "X X");
+        sr.shape("XXX", "X X", "X X");
         sr.setIngredient('X', Material.COPPER_INGOT);
         Bukkit.getServer().addRecipe(sr);
     }
-    public static ItemStack copperBoots;
-    private static void createCopperBoots(){
+
+    private static void createCopperBoots() {
         ItemStack item = new ItemStack(Material.IRON_BOOTS, 1);
         ItemMeta im = item.getItemMeta();
         im.setDisplayName("§fCopper Boots");
+        im.setLocalizedName("copper_boots");
         im.setCustomModelData(1);
         item.setItemMeta(im);
         copperBoots = item;
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_boots"), item);
-        sr.shape("   ",
-                "X X",
-                "X X");
+        sr.shape("   ", "X X", "X X");
         sr.setIngredient('X', Material.COPPER_INGOT);
         ShapedRecipe sr2 = new ShapedRecipe(NamespacedKey.minecraft("copper_boots2"), item);
-        sr2.shape("X X",
-                "X X",
-                "   ");
+        sr2.shape("X X", "X X", "   ");
         sr2.setIngredient('X', Material.COPPER_INGOT);
         Bukkit.getServer().addRecipe(sr);
         Bukkit.getServer().addRecipe(sr2);
     }
-    public static ItemStack copperShovel;
-    private static void createCopperShovel(){
+
+    private static void createCopperShovel() {
         ItemStack item = new ItemStack(Material.IRON_SHOVEL, 1);
         ItemMeta im = item.getItemMeta();
         im.setDisplayName("§fCopper Shovel");
+        im.setLocalizedName("copper_shovel");
         im.setCustomModelData(1);
         item.setItemMeta(im);
-        copperBoots = item;
+        copperShovel = item;
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_shovel"), item);
-        sr.shape(" X ",
-                " Y ",
-                " Y ");
+        sr.shape(" X ", " Y ", " Y ");
         sr.setIngredient('X', Material.COPPER_INGOT);
         sr.setIngredient('Y', Material.STICK);
 
         ShapedRecipe sr2 = new ShapedRecipe(NamespacedKey.minecraft("copper_shovel2"), item);
-        sr2.shape("X  ",
-                "Y  ",
-                "Y  ");
+        sr2.shape("X  ", "Y  ", "Y  ");
         sr2.setIngredient('X', Material.COPPER_INGOT);
         sr2.setIngredient('Y', Material.STICK);
 
         ShapedRecipe sr3 = new ShapedRecipe(NamespacedKey.minecraft("copper_shovel3"), item);
-        sr3.shape("  X",
-                "  Y",
-                "  Y");
+        sr3.shape("  X", "  Y", "  Y");
         sr3.setIngredient('X', Material.COPPER_INGOT);
         sr3.setIngredient('Y', Material.STICK);
         Bukkit.getServer().addRecipe(sr);
         Bukkit.getServer().addRecipe(sr2);
         Bukkit.getServer().addRecipe(sr3);
     }
-    public static ItemStack copperHoe;
-    private static void createCopperHoe(){
+
+    private static void createCopperHoe() {
         ItemStack item = new ItemStack(Material.STONE_HOE, 1);
         ItemMeta im = item.getItemMeta();
         im.setDisplayName("§fCopper Hoe");
+        im.setLocalizedName("copper_hoe");
         im.setCustomModelData(1);
         item.setItemMeta(im);
         copperHoe = item;
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_hoe"), item);
-        sr.shape(" XX",
-                " Y ",
-                " Y ");
+        sr.shape(" XX", " Y ", " Y ");
         sr.setIngredient('X', Material.COPPER_INGOT);
         sr.setIngredient('Y', Material.STICK);
 
         ShapedRecipe sr2 = new ShapedRecipe(NamespacedKey.minecraft("copper_hoe2"), item);
-        sr2.shape("XX ",
-                " Y ",
-                " Y ");
+        sr2.shape("XX ", " Y ", " Y ");
         sr2.setIngredient('X', Material.COPPER_INGOT);
         sr2.setIngredient('Y', Material.STICK);
 
         ShapedRecipe sr3 = new ShapedRecipe(NamespacedKey.minecraft("copper_hoe3"), item);
-        sr3.shape(" XX",
-                "  Y",
-                "  Y");
+        sr3.shape(" XX", "  Y", "  Y");
         sr3.setIngredient('X', Material.COPPER_INGOT);
         sr3.setIngredient('Y', Material.STICK);
 
         ShapedRecipe sr4 = new ShapedRecipe(NamespacedKey.minecraft("copper_hoe4"), item);
-        sr4.shape("XX ",
-                "Y  ",
-                "Y  ");
+        sr4.shape("XX ", "Y  ", "Y  ");
         sr4.setIngredient('X', Material.COPPER_INGOT);
         sr4.setIngredient('Y', Material.STICK);
         Bukkit.getServer().addRecipe(sr);
