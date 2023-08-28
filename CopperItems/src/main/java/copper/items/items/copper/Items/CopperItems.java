@@ -6,17 +6,12 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class CopperItems extends JavaPlugin {
-    public static CopperItems PLUGIN;
-
-    public static CopperItems getPlugin() {
-        return PLUGIN;
-    }
 
     @Override
     public void onEnable() {
-        PLUGIN = this;
         Items.init();
         getServer().getPluginManager().registerEvents(new CopperItemsListener(this), this);
+        getServer().getPluginManager().registerEvents(new ResourcepackChecker(this), this);
         ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
         console.sendMessage(ChatColor.AQUA + "***********************************");
         console.sendMessage(ChatColor.AQUA + "| Copper Items have been enabled! |");

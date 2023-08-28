@@ -1,6 +1,4 @@
-copper\items\items\copper\Items\Crystal.class
-copper\items\items\copper\Items\CrystalsInBody.class
-copper\items\items\copper\Items\CrystalSwordOld.class
-copper\items\items\copper\Items\CrystalSword.class
 copper\items\items\copper\Items\Items.class
+copper\items\items\copper\Items\ResourcepackChecker.class
+copper\items\items\copper\Items\CopperItemsListener.class
 copper\items\items\copper\Items\CopperItems.class
