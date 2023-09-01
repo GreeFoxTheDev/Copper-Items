@@ -1,0 +1,10 @@
+name: CopperItems
+version: '1.3-BETA'
+main: copper.items.items.copper.Items.CopperItems
+api-version: 1.19
+authors: [ GreeFox ]
+description: Adds craftable copper items!
+commands:
+  givecopperitem:
+    description: "Gives a player a copper item!"
+    usage: /<command> <item> <player>
