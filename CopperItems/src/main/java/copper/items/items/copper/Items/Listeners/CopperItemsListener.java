@@ -40,7 +40,7 @@ public class CopperItemsListener implements Listener {
                         lore.clear();
                         lore.add(lore0);
                         lore.add(lore1);
-                        lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
+                        lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " " + CopperItems.getCurrentLang().getString("item_description.att_damage"));
                         lore.add(lore3);
                         im.setLore(lore);
                         item.setItemMeta(im);
@@ -71,7 +71,7 @@ public class CopperItemsListener implements Listener {
                         lore.clear();
                         lore.add(lore0);
                         lore.add(lore1);
-                        lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " Attack Damage");
+                        lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " " + CopperItems.getCurrentLang().getString("item_description.att_damage"));
                         lore.add(lore3);
                         im.setLore(lore);
                         item.setItemMeta(im);

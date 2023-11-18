@@ -1,5 +1,5 @@
 name: CopperItems
-version: '1.3-BETA'
+version: '1.4'
 main: copper.items.items.copper.Items.CopperItems
 api-version: 1.19
 authors: [ GreeFox ]

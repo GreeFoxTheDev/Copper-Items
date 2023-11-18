@@ -2,15 +2,6 @@ package copper.items.items.copper.Items.Commands;
 
 import copper.items.items.copper.Items.CopperItems;
 import copper.items.items.copper.Items.Items;
-import me.greefox.greefox.me.Greefox.Katanas;
-import me.greefox.greefox.me.Greefox.KatanasTypes.Light.CopperLight;
-import me.greefox.greefox.me.Greefox.KatanasTypes.Light.DiamondLight;
-import me.greefox.greefox.me.Greefox.KatanasTypes.Light.GoldLight;
-import me.greefox.greefox.me.Greefox.KatanasTypes.Light.IronLight;
-import me.greefox.greefox.me.Greefox.KatanasTypes.Strong.Copper;
-import me.greefox.greefox.me.Greefox.KatanasTypes.Strong.Diamond;
-import me.greefox.greefox.me.Greefox.KatanasTypes.Strong.Gold;
-import me.greefox.greefox.me.Greefox.KatanasTypes.Strong.Iron;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -153,31 +144,31 @@ public class Give implements CommandExecutor, TabCompleter {
 
                             } else if (chosenPlayer.getInventory().firstEmpty() == -1) {
                                 if (args[0].equalsIgnoreCase("copper_sword")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(),Items.copperSword);
+                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperSword);
                                 }
                                 if (args[0].equalsIgnoreCase("copper_axe")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(),Items.copperAxe);
+                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperAxe);
                                 }
                                 if (args[0].equalsIgnoreCase("copper_pickaxe")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(),Items.copperPickaxe);
+                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperPickaxe);
                                 }
                                 if (args[0].equalsIgnoreCase("copper_helmet")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(),Items.copperHelmet);
+                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperHelmet);
                                 }
                                 if (args[0].equalsIgnoreCase("copper_chestplate")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(),Items.copperChestplate);
+                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperChestplate);
                                 }
                                 if (args[0].equalsIgnoreCase("copper_leggings")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(),Items.copperLeggings);
+                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperLeggings);
                                 }
                                 if (args[0].equalsIgnoreCase("copper_boots")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(),Items.copperBoots);
+                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperBoots);
                                 }
                                 if (args[0].equalsIgnoreCase("copper_shovel")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(),Items.copperShovel);
+                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperShovel);
                                 }
                                 if (args[0].equalsIgnoreCase("copper_hoe")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(),Items.copperHoe);
+                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperHoe);
                                 }
                             }
                         } else sender.sendMessage(ChatColor.RED + "You don't have permission to do that!");
@@ -192,55 +183,61 @@ public class Give implements CommandExecutor, TabCompleter {
                         sender.sendMessage("Gave [" + args[0] + "] to all players.");
                         for (Player allOnlinePlayers : Bukkit.getOnlinePlayers()) {
                             if (!(allOnlinePlayers.getInventory().firstEmpty() == -1)) {
-                                if (args[0].equalsIgnoreCase("copper_katana")) {
-                                    allOnlinePlayers.getInventory().addItem(Copper.copperKatana);
+                                if (args[0].equalsIgnoreCase("copper_sword")) {
+                                    allOnlinePlayers.getInventory().addItem(Items.copperSword);
                                 }
-                                if (args[0].equalsIgnoreCase("iron_katana")) {
-                                    allOnlinePlayers.getInventory().addItem(Iron.ironKatana);
+                                if (args[0].equalsIgnoreCase("copper_axe")) {
+                                    allOnlinePlayers.getInventory().addItem(Items.copperAxe);
                                 }
-                                if (args[0].equalsIgnoreCase("diamond_katana")) {
-                                    allOnlinePlayers.getInventory().addItem(Diamond.diamondKatana);
+                                if (args[0].equalsIgnoreCase("copper_pickaxe")) {
+                                    allOnlinePlayers.getInventory().addItem(Items.copperPickaxe);
                                 }
-                                if (args[0].equalsIgnoreCase("golden_katana")) {
-                                    allOnlinePlayers.getInventory().addItem(Gold.goldKatana);
+                                if (args[0].equalsIgnoreCase("copper_shovel")) {
+                                    allOnlinePlayers.getInventory().addItem(Items.copperShovel);
                                 }
-                                if (args[0].equalsIgnoreCase("light_copper_katana")) {
-                                    allOnlinePlayers.getInventory().addItem(CopperLight.lightCopperKatana);
+                                if (args[0].equalsIgnoreCase("copper_hoe")) {
+                                    allOnlinePlayers.getInventory().addItem(Items.copperHoe);
                                 }
-                                if (args[0].equalsIgnoreCase("light_golden_katana")) {
-                                    allOnlinePlayers.getInventory().addItem(GoldLight.lightGoldKatana);
+                                if (args[0].equalsIgnoreCase("copper_helmet")) {
+                                    allOnlinePlayers.getInventory().addItem(Items.copperHelmet);
                                 }
-                                if (args[0].equalsIgnoreCase("light_iron_katana")) {
-                                    allOnlinePlayers.getInventory().addItem(IronLight.lightIronKatana);
+                                if (args[0].equalsIgnoreCase("copper_chestplate")) {
+                                    allOnlinePlayers.getInventory().addItem(Items.copperChestplate);
                                 }
-                                if (args[0].equalsIgnoreCase("light_diamond_katana")) {
-                                    allOnlinePlayers.getInventory().addItem(DiamondLight.lightDiamondKatana);
+                                if (args[0].equalsIgnoreCase("copper_leggings")) {
+                                    allOnlinePlayers.getInventory().addItem(Items.copperLeggings);
+                                }
+                                if (args[0].equalsIgnoreCase("copper_boots")) {
+                                    allOnlinePlayers.getInventory().addItem(Items.copperBoots);
                                 }
                             } else if (allOnlinePlayers.getInventory().firstEmpty() == -1) {
 
-                                if (args[0].equalsIgnoreCase("copper_katana")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Copper.copperKatana));
+                                if (args[0].equalsIgnoreCase("copper_sword")) {
+                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperSword));
                                 }
-                                if (args[0].equalsIgnoreCase("iron_katana")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Iron.ironKatana));
+                                if (args[0].equalsIgnoreCase("copper_axe")) {
+                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperAxe));
                                 }
-                                if (args[0].equalsIgnoreCase("diamond_katana")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Diamond.diamondKatana));
+                                if (args[0].equalsIgnoreCase("copper_pickaxe")) {
+                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperPickaxe));
                                 }
-                                if (args[0].equalsIgnoreCase("golden_katana")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Gold.goldKatana));
+                                if (args[0].equalsIgnoreCase("copper_shovel")) {
+                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperShovel));
                                 }
-                                if (args[0].equalsIgnoreCase("golden_katana")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), GoldLight.lightGoldKatana);
+                                if (args[0].equalsIgnoreCase("copper_hoe")) {
+                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperHoe));
                                 }
-                                if (args[0].equalsIgnoreCase("light_copper_katana")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), CopperLight.lightCopperKatana);
+                                if (args[0].equalsIgnoreCase("copper_helmet")) {
+                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperHelmet));
                                 }
-                                if (args[0].equalsIgnoreCase("light_iron_katana")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), IronLight.lightIronKatana);
+                                if (args[0].equalsIgnoreCase("copper_chestplate")) {
+                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperChestplate));
                                 }
-                                if (args[0].equalsIgnoreCase("light_diamond_katana")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), DiamondLight.lightDiamondKatana);
+                                if (args[0].equalsIgnoreCase("copper_leggings")) {
+                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperLeggings));
+                                }
+                                if (args[0].equalsIgnoreCase("copper_boots")) {
+                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperBoots));
                                 }
                             }
                         }
@@ -254,11 +251,11 @@ public class Give implements CommandExecutor, TabCompleter {
     @Nullable
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        final List<String> katanas = new ArrayList<>();
-        StringUtil.copyPartialMatches(args[0], Arrays.asList(ARGS), katanas);
-        Collections.sort(katanas);
+        final List<String> items = new ArrayList<>();
+        StringUtil.copyPartialMatches(args[0], Arrays.asList(ARGS), items);
+        Collections.sort(items);
         if (args.length == 1) {
-            return katanas;
+            return items;
         }
 
         final ArrayList<String> finalNames = new ArrayList<>();
