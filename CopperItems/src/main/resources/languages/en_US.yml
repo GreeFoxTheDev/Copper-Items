@@ -1,0 +1,14 @@
+items:
+  axe: Copper Axe
+  hoe: Copper Hoe
+  pickaxe: Copper Pickaxe
+  shovel: Copper Shovel
+  sword: Copper Sword
+armor:
+  boots: Copper Boots
+  chestplate: Copper Chestplate
+  leggings: Copper Leggings
+item_description:
+  in_main_hand: "When in Main Hand:"
+  att_damage: " Attack Damage"
+  att_speed: " Attack Speed"

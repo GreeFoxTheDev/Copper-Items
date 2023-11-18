@@ -11,5 +11,5 @@ armor:
   leggings: Мідна наголінники
 item_description:
   in_main_hand: "Коли в основній руці:"
-  att_damage: Шкоди при атаці
-  att_speed: Швидкість атаки
+  att_damage: " Шкоди при атаці"
+  att_speed: " Швидкість атаки"
