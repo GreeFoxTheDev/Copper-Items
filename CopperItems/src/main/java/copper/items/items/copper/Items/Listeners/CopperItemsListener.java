@@ -30,7 +30,7 @@ public class CopperItemsListener implements Listener {
                     if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
                         int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
                         double sharpDamage = 0.5 * enchLevel + 0.5;
-                        double finalDamage = (6.5 + sharpDamage);
+                        double finalDamage = CopperItems.getInstance().getConfig().getDouble("copper-items.copper-sword.attack-damage") + sharpDamage;
                         String finalDamageString = String.valueOf(finalDamage);
                         assert lore != null;
                         String lore0 = lore.get(0);
@@ -61,7 +61,7 @@ public class CopperItemsListener implements Listener {
                     if (item.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
                         int enchLevel = im.getEnchantLevel(Enchantment.DAMAGE_ALL);
                         double sharpDamage = 0.5 * enchLevel + 0.5;
-                        double finalDamage = (9.5 + sharpDamage);
+                        double finalDamage = CopperItems.getInstance().getConfig().getDouble("copper-items.copper-axe.attack-damage") + sharpDamage;
                         String finalDamageString = String.valueOf(finalDamage);
                         assert lore != null;
                         String lore0 = lore.get(0);

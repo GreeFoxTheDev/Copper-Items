@@ -1,0 +1,15 @@
+items:
+  axe: "Hacha de cobre"
+  hoe: "Azada de cobre"
+  pickaxe: "Pico de cobre"
+  shovel: "Palla de cobre"
+  sword: "Espada de cobre"
+armor:
+  boots: "Botas de cobre"
+  chestplate: "Peto de cobre"
+  helmet: "Casco de cobre"
+  leggings: "Grebas de cobre"
+item_description:
+  in_main_hand: "El la mano principal:"
+  att_damage: " Daño de ataque"
+  att_speed: " Velocidad de ataque"

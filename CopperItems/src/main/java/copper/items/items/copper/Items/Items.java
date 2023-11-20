@@ -70,8 +70,8 @@ public class Items extends JavaPlugin {
         lore.add(ChatColor.GRAY + CopperItems.getCurrentLang().getString("item_description.in_main_hand"));
         String attackDamage = String.valueOf(config.getDouble("copper-items.copper-sword.attack-damage"));
         String attackSpeed = String.valueOf(config.getDouble("copper-items.copper-sword.attack-speed"));
-        lore.add(ChatColor.DARK_GREEN + " " + attackDamage + " " + CopperItems.getCurrentLang().getString("item_description.att_damage"));
-        lore.add(ChatColor.DARK_GREEN + " " + attackSpeed + " " + CopperItems.getCurrentLang().getString("item_description.att_speed"));
+        lore.add(ChatColor.DARK_GREEN + " " + attackDamage + CopperItems.getCurrentLang().getString("item_description.att_damage"));
+        lore.add(ChatColor.DARK_GREEN + " " + attackSpeed + CopperItems.getCurrentLang().getString("item_description.att_speed"));
         im.setLore(lore);
         AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", config.getDouble("copper-items.copper-sword.attack-damage"), Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
@@ -109,7 +109,7 @@ public class Items extends JavaPlugin {
     private static void createCopperAxe() {
         ItemStack item = new ItemStack(Material.IRON_AXE);
         ItemMeta im = item.getItemMeta();
-        im.setDisplayName(CopperItems.getCurrentLang().getString(ChatColor.WHITE + "items.axe"));
+        im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("items.axe"));
         im.setLocalizedName("copper_axe");
         im.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> lore = new ArrayList<>();
@@ -117,8 +117,8 @@ public class Items extends JavaPlugin {
         lore.add(ChatColor.GRAY + CopperItems.getCurrentLang().getString("item_description.in_main_hand"));
         String attackDamage = String.valueOf(config.getDouble("copper-items.copper-axe.attack-damage"));
         String attackSpeed = String.valueOf(config.getDouble("copper-items.copper-axe.attack-speed"));
-        lore.add(ChatColor.DARK_GREEN + " " + attackDamage + " " + CopperItems.getCurrentLang().getString("item_description.att_damage"));
-        lore.add(ChatColor.DARK_GREEN + " " + attackSpeed + " " + CopperItems.getCurrentLang().getString("item_description.att_speed"));
+        lore.add(ChatColor.DARK_GREEN + " " + attackDamage + CopperItems.getCurrentLang().getString("item_description.att_damage"));
+        lore.add(ChatColor.DARK_GREEN + " " + attackSpeed + CopperItems.getCurrentLang().getString("item_description.att_speed"));
         im.setLore(lore);
 
         AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", config.getDouble("copper-items.copper-axe.attack-damage"), Operation.ADD_NUMBER, EquipmentSlot.HAND);
@@ -164,8 +164,9 @@ public class Items extends JavaPlugin {
     private static void createCopperPickaxe() {
         ItemStack item = new ItemStack(Material.STONE_PICKAXE, 1);
         ItemMeta im = item.getItemMeta();
-        im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("item.pickaxe"));
+        im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("items.pickaxe"));
         im.setLocalizedName("copper_pickaxe");
+        im.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> lore = new ArrayList<>();
         lore.add("");
         lore.add(ChatColor.GRAY + CopperItems.getCurrentLang().getString("item_description.in_main_hand"));
@@ -173,8 +174,8 @@ public class Items extends JavaPlugin {
         String attDam = String.valueOf(a);
         int b = (int) 1.2;
         String attSpd = String.valueOf(b);
-        lore.add(ChatColor.DARK_GREEN + attDam + ChatColor.DARK_GREEN + CopperItems.getCurrentLang().getString("item_description.att_damage"));
-        lore.add(ChatColor.DARK_GREEN + attSpd + ChatColor.DARK_GREEN + CopperItems.getCurrentLang().getString("item_description.att_speed"));
+        lore.add(ChatColor.DARK_GREEN + " " + attDam + ChatColor.DARK_GREEN + CopperItems.getCurrentLang().getString("item_description.att_damage"));
+        lore.add(ChatColor.DARK_GREEN + " " + attSpd + ChatColor.DARK_GREEN + CopperItems.getCurrentLang().getString("item_description.att_speed"));
         im.setLore(lore);
         item.setDurability((short) 450);
         im.setCustomModelData(1);
@@ -195,10 +196,9 @@ public class Items extends JavaPlugin {
     private static void createCopperShovel() {
         ItemStack item = new ItemStack(Material.IRON_SHOVEL, 1);
         ItemMeta im = item.getItemMeta();
-        im.setDisplayName("§fCopper Shovel");
+        im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("items.shovel"));
         im.setLocalizedName("copper_shovel");
-        im.setCustomModelData(1);
-        item.setItemMeta(im);
+        im.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         List<String> lore = new ArrayList<>();
         lore.add("");
@@ -207,9 +207,11 @@ public class Items extends JavaPlugin {
         String attDam = String.valueOf(a);
         double b = 1;
         String attSpd = String.valueOf(b);
-        lore.add(ChatColor.DARK_GREEN + attDam + ChatColor.DARK_GREEN + CopperItems.getCurrentLang().getString("item_description.att_damage"));
-        lore.add(ChatColor.DARK_GREEN + attSpd + ChatColor.DARK_GREEN + CopperItems.getCurrentLang().getString("item_description.att_speed"));
+        lore.add(ChatColor.DARK_GREEN + " " + attDam + ChatColor.DARK_GREEN + CopperItems.getCurrentLang().getString("item_description.att_damage"));
+        lore.add(ChatColor.DARK_GREEN + " " + attSpd + ChatColor.DARK_GREEN + CopperItems.getCurrentLang().getString("item_description.att_speed"));
         im.setLore(lore);
+        im.setCustomModelData(1);
+        item.setItemMeta(im);
 
         copperShovel = item;
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_shovel"), item);
@@ -240,10 +242,10 @@ public class Items extends JavaPlugin {
     private static void createCopperHoe() {
         ItemStack item = new ItemStack(Material.STONE_HOE, 1);
         ItemMeta im = item.getItemMeta();
-        im.setDisplayName("§fCopper Hoe");
+        im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("items.hoe"));
         im.setLocalizedName("copper_hoe");
         im.setCustomModelData(1);
-        item.setItemMeta(im);
+        im.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> lore = new ArrayList<>();
         lore.add("");
         lore.add(ChatColor.GRAY + CopperItems.getCurrentLang().getString("item_description.in_main_hand"));
@@ -251,9 +253,10 @@ public class Items extends JavaPlugin {
         String attDam = String.valueOf(a);
         double b = 2;
         String attSpd = String.valueOf(b);
-        lore.add(ChatColor.DARK_GREEN + attDam + ChatColor.DARK_GREEN + CopperItems.getCurrentLang().getString("item_description.att_damage"));
-        lore.add(ChatColor.DARK_GREEN + attSpd + ChatColor.DARK_GREEN + CopperItems.getCurrentLang().getString("item_description.att_speed"));
+        lore.add(ChatColor.DARK_GREEN + " " + attDam + ChatColor.DARK_GREEN + CopperItems.getCurrentLang().getString("item_description.att_damage"));
+        lore.add(ChatColor.DARK_GREEN + " " + attSpd + ChatColor.DARK_GREEN + CopperItems.getCurrentLang().getString("item_description.att_speed"));
         im.setLore(lore);
+        item.setItemMeta(im);
         copperHoe = item;
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_hoe"), item);
         sr.shape(" XX", " Y ", " Y ");
@@ -290,11 +293,11 @@ public class Items extends JavaPlugin {
     private static void createCopperHelmet() {
         ItemStack item = new ItemStack(Material.IRON_HELMET, 1);
         ItemMeta im = item.getItemMeta();
-        im.setDisplayName("§fCopper Helmet");
+        im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("armor.helmet"));
         im.setLocalizedName("copper_helmet");
         item.setDurability((short) 150);
         im.setCustomModelData(1);
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor", config.getDouble("copper-amor.copper-helmet.armor"), Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor", config.getDouble("copper-armor.copper-helmet.armor"), Operation.ADD_NUMBER, EquipmentSlot.HEAD);
         im.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
         item.setItemMeta(im);
         copperHelmet = item;
@@ -318,7 +321,7 @@ public class Items extends JavaPlugin {
     private static void createCopperChestplate() {
         ItemStack item = new ItemStack(Material.IRON_CHESTPLATE, 1);
         ItemMeta im = item.getItemMeta();
-        im.setDisplayName("§fCopper Chestplate");
+        im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("armor.chestplate"));
         im.setLocalizedName("copper_chestplate");
         im.setCustomModelData(1);
         item.setItemMeta(im);
@@ -340,10 +343,10 @@ public class Items extends JavaPlugin {
     private static void createCopperLeggings() {
         ItemStack item = new ItemStack(Material.IRON_LEGGINGS, 1);
         ItemMeta im = item.getItemMeta();
-        im.setDisplayName("§fCopper Leggings");
+        im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("armor.leggings"));
         im.setLocalizedName("copper_leggings");
         im.setCustomModelData(1);
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor", config.getDouble("copper-armor.copper-leggings,armor"), Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor", config.getDouble("copper-armor.copper-leggings.armor"), Operation.ADD_NUMBER, EquipmentSlot.LEGS);
         im.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
         item.setItemMeta(im);
         copperLeggings = item;
@@ -362,10 +365,10 @@ public class Items extends JavaPlugin {
     private static void createCopperBoots() {
         ItemStack item = new ItemStack(Material.IRON_BOOTS, 1);
         ItemMeta im = item.getItemMeta();
-        im.setDisplayName("§fCopper Boots");
+        im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("armor.boots"));
         im.setLocalizedName("copper_boots");
         im.setCustomModelData(1);
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor", config.getDouble("copper-armor.copper-boots.armor"), Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor", config.getDouble("copper-armor.copper-boots.armor"), Operation.ADD_NUMBER, EquipmentSlot.FEET);
         im.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
         item.setItemMeta(im);
         copperBoots = item;

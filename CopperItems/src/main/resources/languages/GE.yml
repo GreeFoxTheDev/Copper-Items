@@ -1,14 +1,15 @@
 items:
-  axe: Copper Axe
-  hoe: Copper Hoe
-  pickaxe: Copper Pickaxe
-  shovel: Copper Shovel
-  sword: Copper Sword
+  axe: "Kupferaxt"
+  hoe: "Kupferhacke"
+  pickaxe: "Kupferpitzhacke"
+  shovel: "Kupferschaufel"
+  sword: "Kupferscgwert"
 armor:
-  boots: Copper Boots
-  chestplate: Copper Chestplate
-  leggings: Copper Leggings
+  boots: "Kupferstiefel"
+  chestplate: "Kupferharnisch"
+  helmet: "Kupferhelm"
+  leggings: "Kupferbeinschutz"
 item_description:
-  in_main_hand: "When in Main Hand:"
-  att_damage: " Attack Damage"
-  att_speed: " Attack Speed"
+  in_main_hand: "In der Haupthand"
+  att_damage: " Angriffsschaden"
+  att_speed: " Angriffsgeschwindigkeit"

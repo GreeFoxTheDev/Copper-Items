@@ -30,6 +30,16 @@ public final class CopperItems extends JavaPlugin {
     public static FileConfiguration getUK(){
         return UK;
     }
+    private File GE_file;
+    private static FileConfiguration GE;
+    public static FileConfiguration get_GE(){
+        return GE;
+    }
+    private File ES_file;
+    private static FileConfiguration ES;
+    public static FileConfiguration getES(){
+        return ES;
+    }
     private static CopperItems instance;
 
     public static CopperItems getInstance() {
@@ -38,18 +48,26 @@ public final class CopperItems extends JavaPlugin {
     public static FileConfiguration getCurrentLang() {
         FileConfiguration en_US = get_en_US();
         FileConfiguration UK = getUK();
+        FileConfiguration GE = get_GE();
+        FileConfiguration ES = getES();
         if (config.getString("language").equalsIgnoreCase("en_US")){
             return en_US;
         }
-        if (config.getString("language").equalsIgnoreCase("UK")){
+        if (config.getString("language").equalsIgnoreCase("UK")) {
             return UK;
+        }
+        if (config.getString("language").equalsIgnoreCase("GE")) {
+            return GE;
+        }
+        if (config.getString("language").equalsIgnoreCase("ES")) {
+            return ES;
         } else return en_US;
     }
     private void create_en_US() {
-        en_US_file = new File(getDataFolder(), "en_US.yml");
+        en_US_file = new File(getDataFolder(), "languages/en_US.yml");
         if (!en_US_file.exists()) {
             en_US_file.getParentFile().mkdirs();
-            saveResource("en_US.yml", false);
+            saveResource("languages/en_US.yml", false);
         }
 
         en_US = new YamlConfiguration();
@@ -61,15 +79,43 @@ public final class CopperItems extends JavaPlugin {
     }
 
     private void createUK() {
-        UK_file = new File(getDataFolder(), "UK.yml");
+        UK_file = new File(getDataFolder(), "languages/UK.yml");
         if (!UK_file.exists()) {
             UK_file.getParentFile().mkdirs();
-            saveResource("UK.yml", false);
+            saveResource("languages/UK.yml", false);
         }
 
         UK = new YamlConfiguration();
         try {
             UK.load(UK_file);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+    }
+    private void create_GE() {
+        GE_file = new File(getDataFolder(), "languages/GE.yml");
+        if (!GE_file.exists()) {
+            GE_file.getParentFile().mkdirs();
+            saveResource("languages/GE.yml", false);
+        }
+
+        GE = new YamlConfiguration();
+        try {
+            GE.load(GE_file);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+    }
+    private void createES() {
+        ES_file = new File(getDataFolder(), "languages/ES.yml");
+        if (!ES_file.exists()) {
+            ES_file.getParentFile().mkdirs();
+            saveResource("languages/ES.yml", false);
+        }
+
+        ES = new YamlConfiguration();
+        try {
+            ES.load(ES_file);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
@@ -80,24 +126,8 @@ public final class CopperItems extends JavaPlugin {
         reloadConfig();
         create_en_US();
         createUK();
-
-        FileConfiguration config = this.getConfig();
-
-        config.addDefault("language", "en_US");
-        config.addDefault("copper-items.copper-axe.enable", true);
-        config.addDefault("copper-items.copper-axe.attack-damage", 9.5);
-        config.addDefault("copper-items.copper-axe.attack-speed", 0.8);
-        config.addDefault("copper-items.copper-sword.enable", true);
-        config.addDefault("copper-items.copper-sword.attack-damage", 6.5);
-        config.addDefault("copper-items.copper-sword.attack-damage", 1.6);
-        config.addDefault("copper-items.copper-pickaxe.enable", true);
-        config.addDefault("copper-items.copper-shovel.enable", true);
-        config.addDefault("copper-items.copper-hoe.enable", true);
-
-        config.addDefault("copper-armor.copper-helmet.enable", true);
-        config.addDefault("copper-armor.copper-chestplate.enable", true);
-        config.addDefault("copper-armor.copper-leggings.enable", true);
-        config.addDefault("copper-armor.copper-boots.enable", true);
+        create_GE();
+        createES();
 
         saveDefaultConfig();
 

@@ -1,20 +1,20 @@
+#en_US, ES, GE (german) or UK (ukrainian), more languages coming soon!
 language: en_US
 copper-items:
   copper-axe:
     enable: true
     attack-damage: 9.5
     attack-speed: 0.8
-  copper-sword:
+  copper-hoe:
     enable: true
-    attack-damage: 6.5
-    attack-speed: 1.6
   copper-pickaxe:
     enable: true
   copper-shovel:
     enable: true
-  copper-hoe:
+  copper-sword:
     enable: true
-
+    attack-damage: 6.5
+    attack-speed: 1.6
 copper-armor:
   copper-helmet:
     enable: true
