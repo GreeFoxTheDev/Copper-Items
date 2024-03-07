@@ -8,6 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.command.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -23,6 +24,12 @@ public class Give implements CommandExecutor, TabCompleter {
 
     public Give(CopperItems plugin) {
         this.plugin = plugin;
+    }
+    private void addItemToInventory(Player player, ItemStack item) {
+        player.getInventory().addItem(item);
+    }
+    private void dropItem(Player player, ItemStack itemStack) {
+        player.getWorld().dropItemNaturally(player.getLocation(), itemStack);
     }
 
     @Override
@@ -44,64 +51,31 @@ public class Give implements CommandExecutor, TabCompleter {
                         }
                     }
                     if (closestEntity != null) {
-                        if (args[0].equalsIgnoreCase("copper_sword")) {
-                            ((Player) closestEntity).getInventory().addItem(Items.copperSword);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_axe")) {
-                            ((Player) closestEntity).getInventory().addItem(Items.copperAxe);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_pickaxe")) {
-                            ((Player) closestEntity).getInventory().addItem(Items.copperPickaxe);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_helmet")) {
-                            ((Player) closestEntity).getInventory().addItem(Items.copperHelmet);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_chestplate")) {
-                            ((Player) closestEntity).getInventory().addItem(Items.copperChestplate);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_leggings")) {
-                            ((Player) closestEntity).getInventory().addItem(Items.copperLeggings);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_boots")) {
-                            ((Player) closestEntity).getInventory().addItem(Items.copperBoots);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_shovel")) {
-                            ((Player) closestEntity).getInventory().addItem(Items.copperShovel);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_hoe")) {
-                            ((Player) closestEntity).getInventory().addItem(Items.copperHoe);
+                        switch (args[0]) {
+                            case "copper_sword": addItemToInventory((Player) closestEntity, Items.copperSword); break;
+                            case "copper_axe": addItemToInventory((Player) closestEntity, Items.copperAxe); break;
+                            case "copper_pickaxe": addItemToInventory((Player) closestEntity, Items.copperPickaxe); break;
+                            case "copper_helmet": addItemToInventory((Player) closestEntity, Items.copperHelmet); break;
+                            case "copper_chestplate": addItemToInventory((Player) closestEntity, Items.copperChestplate); break;
+                            case "copper_leggings": addItemToInventory((Player) closestEntity, Items.copperLeggings); break;
+                            case "copper_boots": addItemToInventory((Player) closestEntity, Items.copperBoots); break;
+                            case "copper_shovel": addItemToInventory((Player) closestEntity, Items.copperShovel); break;
+                            case "copper_hoe": addItemToInventory((Player) closestEntity, Items.copperHoe); break;
                         }
                     }
                 } else if (sender instanceof Player) {
                     Player player = (Player) sender;
                     if (player.isOp()) {
-                        sender.sendMessage("Gave 1 [" + args[0] + "] to player " + sender.getName());
-                        if (args[0].equalsIgnoreCase("copper_sword")) {
-                            player.getInventory().addItem(Items.copperSword);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_axe")) {
-                            player.getInventory().addItem(Items.copperAxe);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_pickaxe")) {
-                            player.getInventory().addItem(Items.copperPickaxe);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_helmet")) {
-                            player.getInventory().addItem(Items.copperHelmet);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_chestplate")) {
-                            player.getInventory().addItem(Items.copperChestplate);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_leggings")) {
-                            player.getInventory().addItem(Items.copperLeggings);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_boots")) {
-                            player.getInventory().addItem(Items.copperBoots);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_shovel")) {
-                            player.getInventory().addItem(Items.copperShovel);
-                        }
-                        if (args[0].equalsIgnoreCase("copper_hoe")) {
-                            player.getInventory().addItem(Items.copperHoe);
+                        switch (args[0]) {
+                            case "copper_sword": addItemToInventory(player, Items.copperSword); break;
+                            case "copper_axe": addItemToInventory(player, Items.copperAxe); break;
+                            case "copper_pickaxe": addItemToInventory(player, Items.copperPickaxe); break;
+                            case "copper_helmet": addItemToInventory(player, Items.copperHelmet); break;
+                            case "copper_chestplate": addItemToInventory(player, Items.copperChestplate); break;
+                            case "copper_leggings": addItemToInventory(player, Items.copperLeggings); break;
+                            case "copper_boots": addItemToInventory(player, Items.copperBoots); break;
+                            case "copper_shovel": addItemToInventory(player, Items.copperShovel); break;
+                            case "copper_hoe": addItemToInventory(player, Items.copperHoe); break;
                         }
                     } else sender.sendMessage(ChatColor.RED + "You don't have permission to do that!");
                 }
@@ -114,61 +88,28 @@ public class Give implements CommandExecutor, TabCompleter {
                         if (sender.isOp()) {
                             sender.sendMessage("Gave 1 [" + args[0] + "] to player " + args[1]);
                             if (!(chosenPlayer.getInventory().firstEmpty() == -1)) {
-                                if (args[0].equalsIgnoreCase("copper_sword")) {
-                                    chosenPlayer.getInventory().addItem(Items.copperSword);
+                                switch (args[0]) {
+                                    case "copper_sword": addItemToInventory(chosenPlayer, Items.copperSword); break;
+                                    case "copper_axe": addItemToInventory(chosenPlayer, Items.copperAxe); break;
+                                    case "copper_pickaxe": addItemToInventory(chosenPlayer, Items.copperPickaxe); break;
+                                    case "copper_helmet": addItemToInventory(chosenPlayer, Items.copperHelmet); break;
+                                    case "copper_chestplate": addItemToInventory(chosenPlayer, Items.copperChestplate); break;
+                                    case "copper_leggings": addItemToInventory(chosenPlayer, Items.copperLeggings); break;
+                                    case "copper_boots": addItemToInventory(chosenPlayer, Items.copperBoots); break;
+                                    case "copper_shovel": addItemToInventory(chosenPlayer, Items.copperShovel); break;
+                                    case "copper_hoe": addItemToInventory(chosenPlayer, Items.copperHoe); break;
                                 }
-                                if (args[0].equalsIgnoreCase("copper_axe")) {
-                                    chosenPlayer.getInventory().addItem(Items.copperAxe);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_pickaxe")) {
-                                    chosenPlayer.getInventory().addItem(Items.copperPickaxe);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_helmet")) {
-                                    chosenPlayer.getInventory().addItem(Items.copperHelmet);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_chestplate")) {
-                                    chosenPlayer.getInventory().addItem(Items.copperChestplate);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_leggings")) {
-                                    chosenPlayer.getInventory().addItem(Items.copperLeggings);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_boots")) {
-                                    chosenPlayer.getInventory().addItem(Items.copperBoots);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_shovel")) {
-                                    chosenPlayer.getInventory().addItem(Items.copperShovel);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_hoe")) {
-                                    chosenPlayer.getInventory().addItem(Items.copperHoe);
-                                }
-
                             } else if (chosenPlayer.getInventory().firstEmpty() == -1) {
-                                if (args[0].equalsIgnoreCase("copper_sword")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperSword);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_axe")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperAxe);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_pickaxe")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperPickaxe);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_helmet")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperHelmet);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_chestplate")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperChestplate);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_leggings")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperLeggings);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_boots")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperBoots);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_shovel")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperShovel);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_hoe")) {
-                                    chosenPlayer.getWorld().dropItemNaturally(chosenPlayer.getLocation(), Items.copperHoe);
+                                switch (args[0]) {
+                                    case "copper_sword": dropItem(chosenPlayer, Items.copperSword); break;
+                                    case "copper_axe": dropItem(chosenPlayer, Items.copperAxe); break;
+                                    case "copper_pickaxe": dropItem(chosenPlayer, Items.copperPickaxe); break;
+                                    case "copper_helmet": dropItem(chosenPlayer, Items.copperHelmet); break;
+                                    case "copper_chestplate": dropItem(chosenPlayer, Items.copperChestplate); break;
+                                    case "copper_leggings": dropItem(chosenPlayer, Items.copperLeggings); break;
+                                    case "copper_boots": dropItem(chosenPlayer, Items.copperBoots); break;
+                                    case "copper_shovel": dropItem(chosenPlayer, Items.copperShovel); break;
+                                    case "copper_hoe": dropItem(chosenPlayer, Items.copperHoe); break;
                                 }
                             }
                         } else sender.sendMessage(ChatColor.RED + "You don't have permission to do that!");
@@ -183,61 +124,28 @@ public class Give implements CommandExecutor, TabCompleter {
                         sender.sendMessage("Gave [" + args[0] + "] to all players.");
                         for (Player allOnlinePlayers : Bukkit.getOnlinePlayers()) {
                             if (!(allOnlinePlayers.getInventory().firstEmpty() == -1)) {
-                                if (args[0].equalsIgnoreCase("copper_sword")) {
-                                    allOnlinePlayers.getInventory().addItem(Items.copperSword);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_axe")) {
-                                    allOnlinePlayers.getInventory().addItem(Items.copperAxe);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_pickaxe")) {
-                                    allOnlinePlayers.getInventory().addItem(Items.copperPickaxe);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_shovel")) {
-                                    allOnlinePlayers.getInventory().addItem(Items.copperShovel);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_hoe")) {
-                                    allOnlinePlayers.getInventory().addItem(Items.copperHoe);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_helmet")) {
-                                    allOnlinePlayers.getInventory().addItem(Items.copperHelmet);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_chestplate")) {
-                                    allOnlinePlayers.getInventory().addItem(Items.copperChestplate);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_leggings")) {
-                                    allOnlinePlayers.getInventory().addItem(Items.copperLeggings);
-                                }
-                                if (args[0].equalsIgnoreCase("copper_boots")) {
-                                    allOnlinePlayers.getInventory().addItem(Items.copperBoots);
+                                switch (args[0]) {
+                                    case "copper_sword": addItemToInventory(allOnlinePlayers, Items.copperSword); break;
+                                    case "copper_axe": addItemToInventory(allOnlinePlayers, Items.copperAxe); break;
+                                    case "copper_pickaxe": addItemToInventory(allOnlinePlayers, Items.copperPickaxe); break;
+                                    case "copper_helmet": addItemToInventory(allOnlinePlayers, Items.copperHelmet); break;
+                                    case "copper_chestplate": addItemToInventory(allOnlinePlayers, Items.copperChestplate); break;
+                                    case "copper_leggings": addItemToInventory(allOnlinePlayers, Items.copperLeggings); break;
+                                    case "copper_boots": addItemToInventory(allOnlinePlayers, Items.copperBoots); break;
+                                    case "copper_shovel": addItemToInventory(allOnlinePlayers, Items.copperShovel); break;
+                                    case "copper_hoe": addItemToInventory(allOnlinePlayers, Items.copperHoe); break;
                                 }
                             } else if (allOnlinePlayers.getInventory().firstEmpty() == -1) {
-
-                                if (args[0].equalsIgnoreCase("copper_sword")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperSword));
-                                }
-                                if (args[0].equalsIgnoreCase("copper_axe")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperAxe));
-                                }
-                                if (args[0].equalsIgnoreCase("copper_pickaxe")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperPickaxe));
-                                }
-                                if (args[0].equalsIgnoreCase("copper_shovel")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperShovel));
-                                }
-                                if (args[0].equalsIgnoreCase("copper_hoe")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperHoe));
-                                }
-                                if (args[0].equalsIgnoreCase("copper_helmet")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperHelmet));
-                                }
-                                if (args[0].equalsIgnoreCase("copper_chestplate")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperChestplate));
-                                }
-                                if (args[0].equalsIgnoreCase("copper_leggings")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperLeggings));
-                                }
-                                if (args[0].equalsIgnoreCase("copper_boots")) {
-                                    allOnlinePlayers.getWorld().dropItemNaturally(allOnlinePlayers.getLocation(), (Items.copperBoots));
+                                switch (args[0]) {
+                                    case "copper_sword": dropItem(allOnlinePlayers, Items.copperSword); break;
+                                    case "copper_axe": dropItem(allOnlinePlayers, Items.copperAxe); break;
+                                    case "copper_pickaxe": dropItem(allOnlinePlayers, Items.copperPickaxe); break;
+                                    case "copper_helmet": dropItem(allOnlinePlayers, Items.copperHelmet); break;
+                                    case "copper_chestplate": dropItem(allOnlinePlayers, Items.copperChestplate); break;
+                                    case "copper_leggings": dropItem(allOnlinePlayers, Items.copperLeggings); break;
+                                    case "copper_boots": dropItem(allOnlinePlayers, Items.copperBoots); break;
+                                    case "copper_shovel": dropItem(allOnlinePlayers, Items.copperShovel); break;
+                                    case "copper_hoe": dropItem(allOnlinePlayers, Items.copperHoe); break;
                                 }
                             }
                         }

@@ -26,36 +26,40 @@ public class Items extends JavaPlugin {
     public static ItemStack copperBoots;
     public static ItemStack copperShovel;
     public static ItemStack copperHoe;
+    public static ItemStack copperShield;
 
     static FileConfiguration config = CopperItems.getInstance().getConfig();
 
     public static void init() {
-        if (config.getBoolean("copper-items.copper-sword.enable")) {
+        if (config.getBoolean("items.sword.enable")) {
             createCopperSword();
         }
-        if (config.getBoolean("copper-items.copper-axe.enable")) {
+        if (config.getBoolean("items.axe.enable")) {
             createCopperAxe();
         }
-        if (config.getBoolean("copper-items.copper-pickaxe.enable")) {
+        if (config.getBoolean("items.pickaxe.enable")) {
             createCopperPickaxe();
         }
-        if (config.getBoolean("copper-items.copper-shovel.enable")) {
+        if (config.getBoolean("items.shovel.enable")) {
             createCopperShovel();
         }
-        if (config.getBoolean("copper-items.copper-hoe.enable")) {
+        if (config.getBoolean("items.hoe.enable")) {
             createCopperHoe();
         }
-        if (config.getBoolean("copper-armor.copper-helmet.enable")) {
+        if (config.getBoolean("armor.helmet.enable")) {
             createCopperHelmet();
         }
-        if (config.getBoolean("copper-armor.copper-chestplate.enable")) {
+        if (config.getBoolean("armor.chestplate.enable")) {
             createCopperChestplate();
         }
-        if (config.getBoolean("copper-armor.copper-leggings.enable")) {
+        if (config.getBoolean("armor.leggings.enable")) {
             createCopperLeggings();
         }
-        if (config.getBoolean("copper-armor.copper-boots.enable")) {
+        if (config.getBoolean("armor.boots.enable")) {
             createCopperBoots();
+        }
+        if (config.getBoolean("items.shield.enable")){
+            createCopperShield();
         }
     }
 
@@ -68,14 +72,14 @@ public class Items extends JavaPlugin {
         List<String> lore = new ArrayList<>();
         lore.add("");
         lore.add(ChatColor.GRAY + CopperItems.getCurrentLang().getString("item_description.in_main_hand"));
-        String attackDamage = String.valueOf(config.getDouble("copper-items.copper-sword.attack-damage"));
-        String attackSpeed = String.valueOf(config.getDouble("copper-items.copper-sword.attack-speed"));
+        String attackDamage = String.valueOf(config.getDouble("items.sword.attack-damage"));
+        String attackSpeed = String.valueOf(config.getDouble("items.sword.attack-speed"));
         lore.add(ChatColor.DARK_GREEN + " " + attackDamage + CopperItems.getCurrentLang().getString("item_description.att_damage"));
         lore.add(ChatColor.DARK_GREEN + " " + attackSpeed + CopperItems.getCurrentLang().getString("item_description.att_speed"));
         im.setLore(lore);
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", config.getDouble("copper-items.copper-sword.attack-damage"), Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", config.getDouble("items.sword.attack-damage"), Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
-        AttributeModifier speed = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", -4.0 + config.getDouble("copper-items.copper-sword.attack-speed"), Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier speed = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", -4.0 + config.getDouble("items.sword.attack-speed"), Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, speed);
         im.setCustomModelData(1);
         item.setItemMeta(im);
@@ -115,15 +119,15 @@ public class Items extends JavaPlugin {
         List<String> lore = new ArrayList<>();
         lore.add("");
         lore.add(ChatColor.GRAY + CopperItems.getCurrentLang().getString("item_description.in_main_hand"));
-        String attackDamage = String.valueOf(config.getDouble("copper-items.copper-axe.attack-damage"));
-        String attackSpeed = String.valueOf(config.getDouble("copper-items.copper-axe.attack-speed"));
+        String attackDamage = String.valueOf(config.getDouble("items.axe.attack-damage"));
+        String attackSpeed = String.valueOf(config.getDouble("items.axe.attack-speed"));
         lore.add(ChatColor.DARK_GREEN + " " + attackDamage + CopperItems.getCurrentLang().getString("item_description.att_damage"));
         lore.add(ChatColor.DARK_GREEN + " " + attackSpeed + CopperItems.getCurrentLang().getString("item_description.att_speed"));
         im.setLore(lore);
 
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", config.getDouble("copper-items.copper-axe.attack-damage"), Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", config.getDouble("items.axe.attack-damage"), Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
-        AttributeModifier speed = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", -4.0 + config.getDouble("copper-items.copper-axe.attack-speed"), Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier speed = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", -4.0 + config.getDouble("items.axe.attack-speed"), Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, speed);
 
         im.setCustomModelData(1);
@@ -297,7 +301,7 @@ public class Items extends JavaPlugin {
         im.setLocalizedName("copper_helmet");
         item.setDurability((short) 150);
         im.setCustomModelData(1);
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor", config.getDouble("copper-armor.copper-helmet.armor"), Operation.ADD_NUMBER, EquipmentSlot.HEAD);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "armor.helmet", config.getDouble("armor.helmet.armor"), Operation.ADD_NUMBER, EquipmentSlot.HEAD);
         im.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
         item.setItemMeta(im);
         copperHelmet = item;
@@ -324,9 +328,9 @@ public class Items extends JavaPlugin {
         im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("armor.chestplate"));
         im.setLocalizedName("copper_chestplate");
         im.setCustomModelData(1);
-        item.setItemMeta(im);
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor", config.getDouble("copper-armor.copper-chestplate.armor"), Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "armor.chest", config.getDouble("armor.chestplate.armor"), Operation.ADD_NUMBER, EquipmentSlot.CHEST);
         im.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
+        item.setItemMeta(im);
         copperChestplate = item;
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_chestplate"), item);
         sr.shape("X X", "XXX", "XXX");
@@ -346,7 +350,7 @@ public class Items extends JavaPlugin {
         im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("armor.leggings"));
         im.setLocalizedName("copper_leggings");
         im.setCustomModelData(1);
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor", config.getDouble("copper-armor.copper-leggings.armor"), Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "armor.leggings", config.getDouble("armor.leggings.armor"), Operation.ADD_NUMBER, EquipmentSlot.LEGS);
         im.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
         item.setItemMeta(im);
         copperLeggings = item;
@@ -368,7 +372,7 @@ public class Items extends JavaPlugin {
         im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("armor.boots"));
         im.setLocalizedName("copper_boots");
         im.setCustomModelData(1);
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armor", config.getDouble("copper-armor.copper-boots.armor"), Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "armor.boots", config.getDouble("armor.boots.armor"), Operation.ADD_NUMBER, EquipmentSlot.FEET);
         im.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
         item.setItemMeta(im);
         copperBoots = item;
@@ -385,6 +389,73 @@ public class Items extends JavaPlugin {
 
         Bukkit.getServer().addRecipe(sr);
         Bukkit.getServer().addRecipe(sr2);
+    }
+    private static void createCopperShield() {
+        ItemStack item = new ItemStack(Material.SHIELD, 1);
+        ItemMeta im = item.getItemMeta();
+        im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("items.shield"));
+        im.setLocalizedName("copper_shield");
+        im.setCustomModelData(19300);
+        item.setItemMeta(im);
+        copperShield = item;
+        ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("copper_shield"), item);
+        sr.shape("XYX", "XXX", " X ");
+        sr.setIngredient('X', Material.OAK_PLANKS);
+        sr.setIngredient('Y', Material.COPPER_INGOT);
+
+        ShapedRecipe sr1 = new ShapedRecipe(NamespacedKey.minecraft("copper_shield1"), item);
+        sr.shape("XYX", "XXX", " X ");
+        sr.setIngredient('X', Material.ACACIA_PLANKS);
+        sr.setIngredient('Y', Material.COPPER_INGOT);
+
+        ShapedRecipe sr2 = new ShapedRecipe(NamespacedKey.minecraft("copper_shield2"), item);
+        sr.shape("XYX", "XXX", " X ");
+        sr.setIngredient('X', Material.BAMBOO_PLANKS);
+        sr.setIngredient('Y', Material.COPPER_INGOT);
+
+        ShapedRecipe sr3 = new ShapedRecipe(NamespacedKey.minecraft("copper_shield3"), item);
+        sr.shape("XYX", "XXX", " X ");
+        sr.setIngredient('X', Material.BIRCH_PLANKS);
+        sr.setIngredient('Y', Material.COPPER_INGOT);
+
+        ShapedRecipe sr4 = new ShapedRecipe(NamespacedKey.minecraft("copper_shield4"), item);
+        sr.shape("XYX", "XXX", " X ");
+        sr.setIngredient('X', Material.DARK_OAK_PLANKS);
+        sr.setIngredient('Y', Material.COPPER_INGOT);
+
+        ShapedRecipe sr5 = new ShapedRecipe(NamespacedKey.minecraft("copper_shield5"), item);
+        sr.shape("XYX", "XXX", " X ");
+        sr.setIngredient('X', Material.JUNGLE_PLANKS);
+        sr.setIngredient('Y', Material.COPPER_INGOT);
+
+        ShapedRecipe sr6 = new ShapedRecipe(NamespacedKey.minecraft("copper_shield6"), item);
+        sr.shape("XYX", "XXX", " X ");
+        sr.setIngredient('X', Material.SPRUCE_PLANKS);
+        sr.setIngredient('Y', Material.COPPER_INGOT);
+
+        ShapedRecipe sr7 = new ShapedRecipe(NamespacedKey.minecraft("copper_shield7"), item);
+        sr7.shape("XYX", "XXX", " X ");
+        sr7.setIngredient('X', Material.MANGROVE_PLANKS);
+        sr7.setIngredient('Y', Material.COPPER_INGOT);
+
+        ShapedRecipe sr8 = new ShapedRecipe(NamespacedKey.minecraft("copper_shield8"), item);
+        sr8.shape("XYX", "XXX", " X ");
+        sr8.setIngredient('X', Material.CHERRY_PLANKS);
+        sr8.setIngredient('Y', Material.COPPER_INGOT);
+
+        ShapelessRecipe sr9 = new ShapelessRecipe(NamespacedKey.minecraft("copper_shield9"), item);
+        sr9.addIngredient(new RecipeChoice.ExactChoice(Items.copperShield));
+        sr9.addIngredient(new RecipeChoice.ExactChoice(Items.copperShield));
+
+        Bukkit.getServer().addRecipe(sr);
+        Bukkit.getServer().addRecipe(sr2);
+        Bukkit.getServer().addRecipe(sr3);
+        Bukkit.getServer().addRecipe(sr4);
+        Bukkit.getServer().addRecipe(sr5);
+        Bukkit.getServer().addRecipe(sr6);
+        Bukkit.getServer().addRecipe(sr7);
+        Bukkit.getServer().addRecipe(sr8);
+        Bukkit.getServer().addRecipe(sr9);
     }
 
 }

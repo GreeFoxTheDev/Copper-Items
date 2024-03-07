@@ -1,30 +1,31 @@
-#en_US, ES, GE (german) or UK (ukrainian), more languages coming soon!
+#en_US, ES, RU, GE (german) or UK (ukrainian), more languages coming soon!
 language: en_US
-copper-items:
-  copper-axe:
+enable-resource-pack: true
+items:
+  axe:
     enable: true
     attack-damage: 9.5
     attack-speed: 0.8
-  copper-hoe:
+  hoe:
     enable: true
-  copper-pickaxe:
+  pickaxe:
     enable: true
-  copper-shovel:
+  shovel:
     enable: true
-  copper-sword:
+  sword:
     enable: true
     attack-damage: 6.5
     attack-speed: 1.6
-copper-armor:
-  copper-helmet:
+armor:
+  helmet:
     enable: true
     armor: 2
-  copper-chestplate:
+  chestplate:
     enable: true
     armor: 6
-  copper-leggings:
+  leggings:
     enable: true
     armor: 4
-  copper-boots:
+  boots:
     enable: true
     armor: 2

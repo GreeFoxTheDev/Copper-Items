@@ -2,6 +2,7 @@ package copper.items.items.copper.Items;
 
 import copper.items.items.copper.Items.Commands.Give;
 import copper.items.items.copper.Items.Listeners.CopperItemsListener;
+import copper.items.items.copper.Items.Listeners.DiscoverRecipe;
 import copper.items.items.copper.Items.Listeners.ResourcepackChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -40,6 +41,11 @@ public final class CopperItems extends JavaPlugin {
     public static FileConfiguration getES(){
         return ES;
     }
+    private File RU_file;
+    private static FileConfiguration RU;
+    public static FileConfiguration getRU(){
+        return RU;
+    }
     private static CopperItems instance;
 
     public static CopperItems getInstance() {
@@ -58,6 +64,9 @@ public final class CopperItems extends JavaPlugin {
         }
         if (config.getString("language").equalsIgnoreCase("GE")) {
             return GE;
+        }
+        if (config.getString("language").equalsIgnoreCase("RU")) {
+            return RU;
         }
         if (config.getString("language").equalsIgnoreCase("ES")) {
             return ES;
@@ -120,6 +129,20 @@ public final class CopperItems extends JavaPlugin {
             e.printStackTrace();
         }
     }
+    private void createRU() {
+        RU_file = new File(getDataFolder(), "languages/RU.yml");
+        if (!RU_file.exists()) {
+            RU_file.getParentFile().mkdirs();
+            saveResource("languages/RU.yml", false);
+        }
+
+        RU = new YamlConfiguration();
+        try {
+            RU.load(RU_file);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onEnable() {
         instance = this;
@@ -128,17 +151,19 @@ public final class CopperItems extends JavaPlugin {
         createUK();
         create_GE();
         createES();
+        createRU();
 
         saveDefaultConfig();
 
+        Items.init();
 
         Objects.requireNonNull(this.getCommand("givecopperitem")).setExecutor(new Give(this));
         Objects.requireNonNull(this.getCommand("givecopperitem")).setTabCompleter(new Give(this));
 
         getServer().getPluginManager().registerEvents(new CopperItemsListener(this), this);
+        getServer().getPluginManager().registerEvents(new DiscoverRecipe(this), this);
         getServer().getPluginManager().registerEvents(new ResourcepackChecker(this), this);
 
-        Items.init();
         ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
         console.sendMessage(ChatColor.AQUA + "***********************************");
         console.sendMessage(ChatColor.AQUA + "| Copper Items have been enabled! |");
