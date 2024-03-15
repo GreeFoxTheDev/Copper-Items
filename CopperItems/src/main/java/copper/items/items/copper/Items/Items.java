@@ -9,6 +9,7 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.attribute.AttributeModifier.Operation;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.*;
+import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -69,6 +70,19 @@ public class Items extends JavaPlugin {
         im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("items.sword"));
         im.setLocalizedName("copper_sword");
         im.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        Damageable copper_sword = (Damageable) item.getItemMeta();
+        if (copper_sword.getDamage() >= 200){
+            im.setCustomModelData(1);
+        } else if (copper_sword.getDamage() >= 150) {
+            im.setCustomModelData(2);
+        } else if (copper_sword.getDamage() >= 100) {
+            im.setCustomModelData(3);
+        } else if (copper_sword.getDamage() >= 50) {
+            im.setCustomModelData(4);
+        } else if (copper_sword.getDamage() > 0) {
+            im.setCustomModelData(5);
+        }
+
         List<String> lore = new ArrayList<>();
         lore.add("");
         lore.add(ChatColor.GRAY + CopperItems.getCurrentLang().getString("item_description.in_main_hand"));
@@ -81,7 +95,6 @@ public class Items extends JavaPlugin {
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
         AttributeModifier speed = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", -4.0 + config.getDouble("items.sword.attack-speed"), Operation.ADD_NUMBER, EquipmentSlot.HAND);
         im.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, speed);
-        im.setCustomModelData(1);
         item.setItemMeta(im);
         copperSword = item;
 
