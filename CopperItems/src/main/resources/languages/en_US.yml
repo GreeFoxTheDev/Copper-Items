@@ -10,6 +10,11 @@ armor:
   chestplate: "Copper Chestplate"
   helmet: "Copper Helmet"
   leggings: "Copper Leggings"
+misc:
+  weathered: "Weathered"
+  slightly: "Slightly"
+  oxidized: "Oxidized"
+  damaged: "Damaged"
 item_description:
   in_main_hand: "When in Main Hand:"
   att_damage: " Attack Damage"

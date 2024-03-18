@@ -11,6 +11,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -30,9 +31,13 @@ public class Items extends JavaPlugin {
     public static ItemStack copperShield;
 
     static FileConfiguration config = CopperItems.getInstance().getConfig();
+    private static Plugin plugin;
+    public Items(Plugin plugin) {
+        this.plugin = plugin;
+    }
 
     public static void init() {
-        if (config.getBoolean("items.sword.enable")) {
+        /*if (config.getBoolean("items.sword.enable")) {
             createCopperSword();
         }
         if (config.getBoolean("items.axe.enable")) {
@@ -59,29 +64,46 @@ public class Items extends JavaPlugin {
         if (config.getBoolean("armor.boots.enable")) {
             createCopperBoots();
         }
-        if (config.getBoolean("items.shield.enable")){
+        if (config.getBoolean("items.shield.enable")) {
             createCopperShield();
-        }
+        }*/
+        createCopperSword2lolo();
+
+    }
+    public static ItemStack copperSword2 = createCopperSword2();
+
+    private static ItemStack createCopperSword2() {
+        ItemBuilder copperSwordBuilder = new ItemBuilder(Material.IRON_SWORD);
+        ItemStack copperSword2 = copperSwordBuilder
+                .setDisName("Copper Sword")
+                .setLocName("copper_sword")
+                .hideAttributes(true)
+                .setCustomModelData(1)
+                .addLore("")
+                .setAttackDamage(config.getDouble("items.sword.attack-damage"))
+                .setAttackSpeed(config.getDouble("items.sword.attack-speed"))
+                .setRecipe(new String[]{" M ", " M ", " S "}, new String[]{"MELON", "STICK"})
+                .build();
+                //.setNamespacedKey("copper_sword_lol")
+                //.setRecipe(Material.AIR, Material.COPPER_INGOT, Material.AIR, Material.AIR, Material.COPPER_INGOT, Material.AIR, Material.AIR, Material.STICK, Material.AIR)
+        return copperSword2;
     }
 
-    private static void createCopperSword() {
+
+
+
+    public static void createCopperSword2lolo(){
+        createCopperSword2();
+    }
+
+
+    /*private static void createCopperSword() {
         ItemStack item = new ItemStack(Material.IRON_SWORD, 1);
         ItemMeta im = item.getItemMeta();
         im.setDisplayName(ChatColor.WHITE + CopperItems.getCurrentLang().getString("items.sword"));
         im.setLocalizedName("copper_sword");
         im.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        Damageable copper_sword = (Damageable) item.getItemMeta();
-        if (copper_sword.getDamage() >= 200){
-            im.setCustomModelData(1);
-        } else if (copper_sword.getDamage() >= 150) {
-            im.setCustomModelData(2);
-        } else if (copper_sword.getDamage() >= 100) {
-            im.setCustomModelData(3);
-        } else if (copper_sword.getDamage() >= 50) {
-            im.setCustomModelData(4);
-        } else if (copper_sword.getDamage() > 0) {
-            im.setCustomModelData(5);
-        }
+        im.setCustomModelData(1);
 
         List<String> lore = new ArrayList<>();
         lore.add("");
@@ -469,6 +491,6 @@ public class Items extends JavaPlugin {
         Bukkit.getServer().addRecipe(sr7);
         Bukkit.getServer().addRecipe(sr8);
         Bukkit.getServer().addRecipe(sr9);
-    }
+    }*/
 
 }

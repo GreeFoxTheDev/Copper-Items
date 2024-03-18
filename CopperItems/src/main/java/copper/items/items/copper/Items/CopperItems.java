@@ -3,6 +3,7 @@ package copper.items.items.copper.Items;
 import copper.items.items.copper.Items.Commands.Give;
 import copper.items.items.copper.Items.Listeners.CopperItemsListener;
 import copper.items.items.copper.Items.Listeners.DiscoverRecipe;
+import copper.items.items.copper.Items.Listeners.Oxidize;
 import copper.items.items.copper.Items.Listeners.ResourcepackChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -18,7 +19,13 @@ import java.util.Objects;
 
 import static copper.items.items.copper.Items.Items.config;
 
+
 public final class CopperItems extends JavaPlugin {
+    private static CopperItems instance;
+
+    public static CopperItems getInstance() {
+        return instance;
+    }
 
     private File en_US_file;
     private static FileConfiguration en_US;
@@ -46,11 +53,8 @@ public final class CopperItems extends JavaPlugin {
     public static FileConfiguration getRU(){
         return RU;
     }
-    private static CopperItems instance;
 
-    public static CopperItems getInstance() {
-        return instance;
-    }
+
     public static FileConfiguration getCurrentLang() {
         FileConfiguration en_US = get_en_US();
         FileConfiguration UK = getUK();
@@ -153,9 +157,10 @@ public final class CopperItems extends JavaPlugin {
         createES();
         createRU();
 
+        Items.init();
+
         saveDefaultConfig();
 
-        Items.init();
 
         Objects.requireNonNull(this.getCommand("givecopperitem")).setExecutor(new Give(this));
         Objects.requireNonNull(this.getCommand("givecopperitem")).setTabCompleter(new Give(this));
@@ -163,6 +168,7 @@ public final class CopperItems extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new CopperItemsListener(this), this);
         getServer().getPluginManager().registerEvents(new DiscoverRecipe(this), this);
         getServer().getPluginManager().registerEvents(new ResourcepackChecker(this), this);
+        getServer().getPluginManager().registerEvents(new Oxidize(this), this);
 
         ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
         console.sendMessage(ChatColor.AQUA + "***********************************");

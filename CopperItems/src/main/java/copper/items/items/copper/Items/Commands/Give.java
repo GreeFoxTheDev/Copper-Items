@@ -67,7 +67,7 @@ public class Give implements CommandExecutor, TabCompleter {
                     Player player = (Player) sender;
                     if (player.isOp()) {
                         switch (args[0]) {
-                            case "copper_sword": addItemToInventory(player, Items.copperSword); break;
+                            case "copper_sword": addItemToInventory(player, Items.copperSword2); break;
                             case "copper_axe": addItemToInventory(player, Items.copperAxe); break;
                             case "copper_pickaxe": addItemToInventory(player, Items.copperPickaxe); break;
                             case "copper_helmet": addItemToInventory(player, Items.copperHelmet); break;
