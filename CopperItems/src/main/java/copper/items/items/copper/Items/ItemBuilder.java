@@ -32,6 +32,16 @@ public class ItemBuilder {
     private int enchantmentLevel;
     private String[] recipeShape;
     private String[] ingredients;
+    private Material A;
+    private Material B;
+    private Material C;
+    private Material D;
+    private Material E;
+    private Material F;
+    private Material G;
+    private Material H;
+    private Material I;
+
 
     public ItemBuilder(Material material) {
         this.material = material;
@@ -44,8 +54,17 @@ public class ItemBuilder {
         this.glowing = false;
         this.enchantment = null;
         this.enchantmentLevel = 0;
-        this.recipeShape = null;
-        this.ingredients = null;
+        //this.recipeShape = null;
+        //this.ingredients = null;
+        this.A = null;
+        this.B = null;
+        this.C = null;
+        this.D = null;
+        this.E = null;
+        this.F = null;
+        this.G = null;
+        this.H = null;
+        this.I = null;
     }
 
     public ItemBuilder setDisName(String displayName) {
@@ -98,9 +117,18 @@ public class ItemBuilder {
         this.enchantmentLevel = level;
         return this;
     }
-    public ItemBuilder setRecipe(String[] recipeShape, String[] ingredients) {
-        this.recipeShape = recipeShape;
-        this.ingredients = ingredients;
+
+    public ItemBuilder setRecipe(Material A, Material B, Material C, Material D, Material E, Material F, Material G, Material H, Material I) {
+        this.A = A;
+        this.B = B;
+        this.C = C;
+        this.D = D;
+        this.E = E;
+        this.F = F;
+        this.G = G;
+        this.H = H;
+        this.I = I;
+
         return this;
     }
 
@@ -132,21 +160,23 @@ public class ItemBuilder {
             meta.addEnchant(enchantment, enchantmentLevel, true);
         }
         itemStack.setItemMeta(meta);
+        ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft(localName), itemStack);
+        sr.shape("ABC", "DEF", "GHI");
+        sr.setIngredient('A', A);
+        sr.setIngredient('B', B);
+        sr.setIngredient('C', C);
+        sr.setIngredient('D', D);
+        sr.setIngredient('E', E);
+        sr.setIngredient('F', F);
+        sr.setIngredient('G', G);
+        sr.setIngredient('H', H);
+        sr.setIngredient('I', I);
 
-        if (recipeShape != null && ingredients != null) {
-            ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft(localName), itemStack);
-            recipe.shape(recipeShape);
-            for (int i = 0; i < recipeShape.length; i++) {
-                for (int j = 0; j < recipeShape[i].length(); j++) {
-                    char ingredientChar = recipeShape[i].charAt(j);
-                    if (ingredientChar != ' ') {
-                        recipe.setIngredient(ingredientChar, Material.matchMaterial(ingredients[i * recipeShape[i].length() + j]));
-                    }
-                }
-            }
-            Bukkit.getServer().addRecipe(recipe);
+
+        NamespacedKey recipeKey = new NamespacedKey("minecraft", localName);
+        if (Bukkit.getServer().getRecipe(recipeKey) == null) {
+            Bukkit.getServer().addRecipe(sr);
         }
-
 
         return itemStack;
     }

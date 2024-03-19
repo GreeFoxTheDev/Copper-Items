@@ -82,10 +82,8 @@ public class Items extends JavaPlugin {
                 .addLore("")
                 .setAttackDamage(config.getDouble("items.sword.attack-damage"))
                 .setAttackSpeed(config.getDouble("items.sword.attack-speed"))
-                .setRecipe(new String[]{" M ", " M ", " S "}, new String[]{"MELON", "STICK"})
+                .setRecipe(Material.AIR, Material.COPPER_INGOT, Material.AIR, Material.AIR, Material.COPPER_INGOT, Material.AIR, Material.AIR, Material.STICK, Material.AIR)
                 .build();
-                //.setNamespacedKey("copper_sword_lol")
-                //.setRecipe(Material.AIR, Material.COPPER_INGOT, Material.AIR, Material.AIR, Material.COPPER_INGOT, Material.AIR, Material.AIR, Material.STICK, Material.AIR)
         return copperSword2;
     }
 
