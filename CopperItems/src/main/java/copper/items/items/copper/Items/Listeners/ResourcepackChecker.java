@@ -20,7 +20,7 @@ public class ResourcepackChecker implements Listener {
 
         if (config.getBoolean("enable-resource-pack") == true) {
             if (!(Bukkit.getServer().getPluginManager().isPluginEnabled("EpicWeapons"))) {
-                event.getPlayer().setResourcePack("https://cdn-raw.modrinth.com/data/TQ5na7TX/versions/tRLkpZCx/EpicWepons-BETA-0.11.zip");
+                event.getPlayer().setResourcePack("");
             }
         }
     }

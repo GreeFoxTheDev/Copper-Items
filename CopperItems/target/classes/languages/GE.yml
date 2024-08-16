@@ -1,15 +1,20 @@
 items:
   axe: "Kupferaxt"
   hoe: "Kupferhacke"
-  pickaxe: "Kupferpitzhacke"
+  pickaxe: "Kupferpickel"
   shovel: "Kupferschaufel"
-  sword: "Kupferscgwert"
+  sword: "Kupferschwert"
   shield: "Kupferschild"
 armor:
   boots: "Kupferstiefel"
-  chestplate: "Kupferharnisch"
+  chestplate: "Kupferbrustplatte"
   helmet: "Kupferhelm"
-  leggings: "Kupferbeinschutz"
+  leggings: "Kupferbeinplatten"
+misc:
+  exposed: "Freigelegt "
+  weathered: "Verwittert "
+  oxidized: "Oxidiert "
+  damaged: "Beschädigt "
 item_description:
   in_main_hand: "In der Haupthand"
   att_damage: " Angriffsschaden"

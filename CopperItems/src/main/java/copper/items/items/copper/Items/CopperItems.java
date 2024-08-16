@@ -1,12 +1,11 @@
 package copper.items.items.copper.Items;
 
 import copper.items.items.copper.Items.Commands.Give;
-import copper.items.items.copper.Items.Listeners.CopperItemsListener;
-import copper.items.items.copper.Items.Listeners.DiscoverRecipe;
 import copper.items.items.copper.Items.Listeners.Oxidize;
-import copper.items.items.copper.Items.Listeners.ResourcepackChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.World;
+import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -15,17 +14,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Objects;
 
 import static copper.items.items.copper.Items.Items.config;
 
-
 public final class CopperItems extends JavaPlugin {
-    private static CopperItems instance;
 
-    public static CopperItems getInstance() {
-        return instance;
-    }
 
     private File en_US_file;
     private static FileConfiguration en_US;
@@ -48,13 +45,11 @@ public final class CopperItems extends JavaPlugin {
     public static FileConfiguration getES(){
         return ES;
     }
-    private File RU_file;
-    private static FileConfiguration RU;
-    public static FileConfiguration getRU(){
-        return RU;
+    private static CopperItems instance;
+
+    public static CopperItems getInstance() {
+        return instance;
     }
-
-
     public static FileConfiguration getCurrentLang() {
         FileConfiguration en_US = get_en_US();
         FileConfiguration UK = getUK();
@@ -68,9 +63,6 @@ public final class CopperItems extends JavaPlugin {
         }
         if (config.getString("language").equalsIgnoreCase("GE")) {
             return GE;
-        }
-        if (config.getString("language").equalsIgnoreCase("RU")) {
-            return RU;
         }
         if (config.getString("language").equalsIgnoreCase("ES")) {
             return ES;
@@ -133,53 +125,96 @@ public final class CopperItems extends JavaPlugin {
             e.printStackTrace();
         }
     }
-    private void createRU() {
-        RU_file = new File(getDataFolder(), "languages/RU.yml");
-        if (!RU_file.exists()) {
-            RU_file.getParentFile().mkdirs();
-            saveResource("languages/RU.yml", false);
-        }
-
-        RU = new YamlConfiguration();
-        try {
-            RU.load(RU_file);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-    }
     @Override
     public void onEnable() {
+
+
+
+
+
+        // Replace "world" with the name of your target world if different.
+        World world = Bukkit.getWorld("world");
+        if (world != null) {
+            File datapacksDir = new File(((World) world).getWorldFolder(), "datapacks");
+
+            // Create the datapacks directory if it doesn't exist
+            if (!datapacksDir.exists()) {
+                boolean created = datapacksDir.mkdirs();
+                if (created) {
+                    getLogger().info("Datapacks folder created successfully!");
+                } else {
+                    getLogger().warning("Failed to create datapacks folder.");
+                }
+            } else {
+                getLogger().info("Datapacks folder already exists.");
+            }
+
+            // Optionally, download a file and place it in the datapacks folder
+            try {
+                URL fileUrl = new URL("https://cdn.modrinth.com/data/gbnXN4Fr/versions/sMLXXkOX/CopperArmorTrimsDP-%5BALPHA-1.1%5D.zip");
+                File targetFile = new File(datapacksDir, "CopperItemsDP.zip");
+
+                if (!targetFile.exists()) {
+                    // Download and copy the file
+                    Files.copy(fileUrl.openStream(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    getLogger().info("Datapack downloaded and saved successfully!");
+                    getLogger().info("");
+                    getLogger().info("The server will restart, please wait!");
+                    getLogger().info("");
+                    //Bukkit.getScheduler().runTaskLater(this, this::restartServer, 20 * 6);
+                    executeCommand("restart");
+                }
+                else getLogger().info("Datapack is downloaded already!");
+            } catch (IOException e) {
+                getLogger().severe("Failed to download datapack: " + e.getMessage());
+                e.printStackTrace();
+            }
+        } else {
+            getLogger().warning("World not found.");
+        }
+
+
+
+
         instance = this;
         reloadConfig();
         create_en_US();
         createUK();
         create_GE();
         createES();
-        createRU();
-
-        Items.init();
 
         saveDefaultConfig();
+
+        Items.init();
 
 
         Objects.requireNonNull(this.getCommand("givecopperitem")).setExecutor(new Give(this));
         Objects.requireNonNull(this.getCommand("givecopperitem")).setTabCompleter(new Give(this));
 
-        getServer().getPluginManager().registerEvents(new CopperItemsListener(this), this);
-        getServer().getPluginManager().registerEvents(new DiscoverRecipe(this), this);
-        getServer().getPluginManager().registerEvents(new ResourcepackChecker(this), this);
-        getServer().getPluginManager().registerEvents(new Oxidize(this), this);
+        //getCommand("copperitems").setExecutor(new CopperItemsCommand(this));
 
+        //getServer().getPluginManager().registerEvents(new CopperItemsListener(this), this);
+        //getServer().getPluginManager().registerEvents(new ResourcepackChecker(this), this);
+
+
+        Bukkit.getServer().getPluginManager().registerEvents(new Oxidize(this), this);
         ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
         console.sendMessage(ChatColor.AQUA + "***********************************");
         console.sendMessage(ChatColor.AQUA + "| Copper Items have been enabled! |");
         console.sendMessage(ChatColor.AQUA + "***********************************");
     }
+
     @Override
     public void onDisable() {
         ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
         console.sendMessage(ChatColor.DARK_RED + "************************************");
         console.sendMessage(ChatColor.DARK_RED + "| Copper Items have been disabled! |");
         console.sendMessage(ChatColor.DARK_RED + "************************************");
+    }
+
+    private void executeCommand(String command) {
+        // Execute the command as the console
+        CommandSender console = Bukkit.getConsoleSender();
+        Bukkit.dispatchCommand(console, command);
     }
 }

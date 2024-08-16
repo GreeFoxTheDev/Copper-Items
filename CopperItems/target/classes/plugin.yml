@@ -1,9 +1,10 @@
 name: CopperItems
-version: '1.4'
+version: '2.0'
 main: copper.items.items.copper.Items.CopperItems
-api-version: 1.19
-authors: [ GreeFox ]
+api-version: 1.21.1
+authors: [ Greefox ]
 description: Adds craftable copper items!
+load: POSTWORLD
 commands:
   givecopperitem:
     description: "Gives a player a copper item!"

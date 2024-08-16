@@ -63,11 +63,10 @@ public class Give implements CommandExecutor, TabCompleter {
                             case "copper_hoe": addItemToInventory((Player) closestEntity, Items.copperHoe); break;
                         }
                     }
-                } else if (sender instanceof Player) {
-                    Player player = (Player) sender;
+                } else if (sender instanceof Player player) {
                     if (player.isOp()) {
                         switch (args[0]) {
-                            case "copper_sword": addItemToInventory(player, Items.copperSword2); break;
+                            case "copper_sword": addItemToInventory(player, Items.copperSword); break;
                             case "copper_axe": addItemToInventory(player, Items.copperAxe); break;
                             case "copper_pickaxe": addItemToInventory(player, Items.copperPickaxe); break;
                             case "copper_helmet": addItemToInventory(player, Items.copperHelmet); break;

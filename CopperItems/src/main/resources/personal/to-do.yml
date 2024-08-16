@@ -1,0 +1,10 @@
+test: languages
+make: oxidizing for all items with armor
+make-2: language support for all terms
+make-3: resorucepack
+make-4: get the version in things using config from the plugin.yml
+
+make-IMPORTANT: armor trim vanilla datapack-need to add a file to /world
+
+i-did:
+  removed: "copper-" from strings

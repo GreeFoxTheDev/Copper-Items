@@ -10,6 +10,11 @@ armor:
   chestplate: "Медный Нагрудник"
   helmet: "Медный меч"
   leggings: "Медные Поножи"
+misc:
+  exposed: "Подвергнутый воздействию "
+  weathered: "Выветрившийся "
+  oxidized: "Окислившийся "
+  damaged: "Поврежденный "
 item_description:
   in_main_hand: "Когда в ведущей руке:"
   att_damage: " Урон"

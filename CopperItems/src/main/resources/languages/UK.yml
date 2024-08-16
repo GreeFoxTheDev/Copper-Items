@@ -10,6 +10,11 @@ armor:
   chestplate: "Мідна нагрудник"
   helmet: "Мідна шолом"
   leggings: "Мідна наголінники"
+misc:
+  exposed: "Відкритий "
+  weathered: "Зношений "
+  oxidized: "Окислений "
+  damaged: "Пошкоджений "
 item_description:
   in_main_hand: "Коли в основній руці:"
   att_damage: " Шкоди при атаці"
