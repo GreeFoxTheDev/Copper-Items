@@ -3,6 +3,8 @@ make: oxidizing for all items with armor
 make-2: language support for all terms
 make-3: resorucepack
 make-4: get the version in things using config from the plugin.yml
+make-5: generated
+make-6: add back the armor trim hide
 
 make-IMPORTANT: armor trim vanilla datapack-need to add a file to /world
 

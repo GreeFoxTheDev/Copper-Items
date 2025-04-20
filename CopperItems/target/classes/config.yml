@@ -29,3 +29,5 @@ armor:
   boots:
     enable: true
     armor: 2
+nerd-stuff:
+  world-name: world

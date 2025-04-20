@@ -17,12 +17,11 @@ import org.bukkit.inventory.meta.trim.TrimPattern;
 
 public class Oxidize implements Listener {
     CopperItems plugin;
+    FileConfiguration lang = CopperItems.getCurrentLang();
 
     public Oxidize(CopperItems plugin) {
         this.plugin = plugin;
     }
-
-    FileConfiguration lang = CopperItems.getCurrentLang();
 
     @EventHandler
     public void onItemDamage(PlayerItemDamageEvent e) {
@@ -32,14 +31,12 @@ public class Oxidize implements Listener {
         String locName = im.getItemName();
         if (locName == null) return;
 
-        if (locName.startsWith("copper_")) {
+        if (locName.startsWith("copper_") && !locName.equalsIgnoreCase("copper_katana")) {
 
             int badDurability = item.getDurability();
             int maxDurability = item.getType().getMaxDurability();
             int durability = maxDurability - badDurability - 1;
             int durabilitySmol = maxDurability / 5;
-
-            e.getPlayer().sendMessage(String.valueOf(durability));
 
             int customModelData = item.getItemMeta().getCustomModelData();
             String name = item.getItemMeta().getDisplayName();
@@ -51,17 +48,14 @@ public class Oxidize implements Listener {
 
             if (durability >= durabilitySmol * 4) {
                 customModelData = 1;
-                e.getPlayer().sendMessage("1");
             } else if (durability >= durabilitySmol * 3) {
                 if (!name.contains(ex)) {
                     newName = ex + name;
                     customModelData = 2;
 
-                    e.getPlayer().sendMessage("2");
 
-                    if (im instanceof ArmorMeta am){
-                        am.setTrim(new ArmorTrim(getCustomTrimMaterial("copper_armor:custom_copper_exposed"), getCustomTrimPattern("copper_armor:custom_copper_exposed")));
-                        e.getPlayer().sendMessage("test");
+                    if (im instanceof ArmorMeta am) {
+                        am.setTrim(new ArmorTrim(getCustomTrimMaterial("copper_armor:custom_copper_exposed"), getCustomTrimPattern()));
                     }
                 }
 
@@ -69,8 +63,8 @@ public class Oxidize implements Listener {
                 if (!name.contains(we)) {
                     newName = we + name.replace(ex, "");
                     customModelData = 3;
-                    if (im instanceof ArmorMeta am){
-                        am.setTrim(new ArmorTrim(getCustomTrimMaterial("copper_armor:custom_copper_weathered"), getCustomTrimPattern("copper_armor:custom_copper_weathered")));
+                    if (im instanceof ArmorMeta am) {
+                        am.setTrim(new ArmorTrim(getCustomTrimMaterial("copper_armor:custom_copper_weathered"), getCustomTrimPattern()));
                     }
                 }
 
@@ -78,8 +72,8 @@ public class Oxidize implements Listener {
                 if (!name.contains(ox)) {
                     newName = ox + name.replace(we, "");
                     customModelData = 4;
-                    if (im instanceof ArmorMeta am){
-                        am.setTrim(new ArmorTrim(getCustomTrimMaterial("copper_armor:custom_copper_oxidized"), getCustomTrimPattern("copper_armor:custom_copper_oxidized")));
+                    if (im instanceof ArmorMeta am) {
+                        am.setTrim(new ArmorTrim(getCustomTrimMaterial("copper_armor:custom_copper_oxidized"), getCustomTrimPattern()));
                     }
                 }
 
@@ -87,8 +81,8 @@ public class Oxidize implements Listener {
                 if (!name.contains(da)) {
                     newName = da + name.replace(ox, "");
                     customModelData = 5;
-                    if (im instanceof ArmorMeta am){
-                        am.setTrim(new ArmorTrim(getCustomTrimMaterial("copper_armor:custom_copper_damaged"), getCustomTrimPattern("copper_armor:custom_copper_damaged")));
+                    if (im instanceof ArmorMeta am) {
+                        am.setTrim(new ArmorTrim(getCustomTrimMaterial("copper_armor:custom_copper_damaged"), getCustomTrimPattern()));
                     }
                 }
             }
@@ -98,10 +92,12 @@ public class Oxidize implements Listener {
             item.setItemMeta(im);
         }
     }
-    private TrimPattern getCustomTrimPattern(String patternNameSpace) {
-        NamespacedKey key = NamespacedKey.fromString(patternNameSpace);
+
+    private TrimPattern getCustomTrimPattern() {
+        NamespacedKey key = NamespacedKey.fromString("copper_armor:custom_copper");
         return Bukkit.getRegistry(TrimPattern.class).get(key);
     }
+
     private TrimMaterial getCustomTrimMaterial(String patternNameSpace) {
         NamespacedKey key = NamespacedKey.fromString(patternNameSpace);
         return Bukkit.getRegistry(TrimMaterial.class).get(key);

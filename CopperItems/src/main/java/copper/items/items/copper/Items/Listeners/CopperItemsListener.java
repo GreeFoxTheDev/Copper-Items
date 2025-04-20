@@ -22,29 +22,27 @@ public class CopperItemsListener implements Listener {
     @EventHandler
     public void onApplyCopperSword(InventoryClickEvent event) {
         if (event.getCurrentItem() != null) {
-            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasLocalizedName()) {
-                if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("copper_sword")) {
-                    ItemStack item = event.getCurrentItem();
-                    ItemMeta im = item.getItemMeta();
-                    List<String> lore = im.getLore();
-                    if (item.getItemMeta().hasEnchant(Enchantment.SHARPNESS)) {
-                        int enchLevel = im.getEnchantLevel(Enchantment.SHARPNESS);
-                        double sharpDamage = 0.5 * enchLevel + 0.5;
-                        double finalDamage = CopperItems.getInstance().getConfig().getDouble("items.sword.attack-damage") + sharpDamage;
-                        String finalDamageString = String.valueOf(finalDamage);
-                        assert lore != null;
-                        String lore0 = lore.get(0);
-                        String lore1 = lore.get(1);
-                        String lore3 = lore.get(3);
+            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasItemName() && event.getCurrentItem().getItemMeta().getItemName().equals("copper_sword")) {
+                ItemStack item = event.getCurrentItem();
+                ItemMeta im = item.getItemMeta();
+                List<String> lore = im.getLore();
+                if (item.getItemMeta().hasEnchant(Enchantment.SHARPNESS)) {
+                    int enchLevel = im.getEnchantLevel(Enchantment.SHARPNESS);
+                    double sharpDamage = 0.5 * enchLevel + 0.5;
+                    double finalDamage = CopperItems.getInstance().getConfig().getDouble("items.sword.attack-damage") + sharpDamage;
+                    String finalDamageString = String.valueOf(finalDamage);
+                    assert lore != null;
+                    String lore0 = lore.get(0);
+                    String lore1 = lore.get(1);
+                    String lore3 = lore.get(3);
 
-                        lore.clear();
-                        lore.add(lore0);
-                        lore.add(lore1);
-                        lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " " + CopperItems.getCurrentLang().getString("item_description.att_damage"));
-                        lore.add(lore3);
-                        im.setLore(lore);
-                        item.setItemMeta(im);
-                    }
+                    lore.clear();
+                    lore.add(lore0);
+                    lore.add(lore1);
+                    lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " " + CopperItems.getCurrentLang().getString("item_description.att_damage"));
+                    lore.add(lore3);
+                    im.setLore(lore);
+                    item.setItemMeta(im);
                 }
             }
         }
@@ -53,29 +51,27 @@ public class CopperItemsListener implements Listener {
     @EventHandler
     public void onApplyCopperAxe(InventoryClickEvent event) {
         if (event.getCurrentItem() != null) {
-            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasLocalizedName()) {
-                if (event.getCurrentItem().getItemMeta().getLocalizedName().equals("copper_axe")) {
-                    ItemStack item = event.getCurrentItem();
-                    ItemMeta im = item.getItemMeta();
-                    List<String> lore = im.getLore();
-                    if (item.getItemMeta().hasEnchant(Enchantment.SHARPNESS)) {
-                        int enchLevel = im.getEnchantLevel(Enchantment.SHARPNESS);
-                        double sharpDamage = 0.5 * enchLevel + 0.5;
-                        double finalDamage = CopperItems.getInstance().getConfig().getDouble("items.axe.attack-damage") + sharpDamage;
-                        String finalDamageString = String.valueOf(finalDamage);
-                        assert lore != null;
-                        String lore0 = lore.get(0);
-                        String lore1 = lore.get(1);
-                        String lore3 = lore.get(3);
+            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasItemName() && event.getCurrentItem().getItemMeta().getItemName().equals("copper_axe")) {
+                ItemStack item = event.getCurrentItem();
+                ItemMeta im = item.getItemMeta();
+                List<String> lore = im.getLore();
+                if (item.getItemMeta().hasEnchant(Enchantment.SHARPNESS)) {
+                    int enchLevel = im.getEnchantLevel(Enchantment.SHARPNESS);
+                    double sharpDamage = 0.5 * enchLevel + 0.5;
+                    double finalDamage = CopperItems.getInstance().getConfig().getDouble("items.axe.attack-damage") + sharpDamage;
+                    String finalDamageString = String.valueOf(finalDamage);
+                    assert lore != null;
+                    String lore0 = lore.get(0);
+                    String lore1 = lore.get(1);
+                    String lore3 = lore.get(3);
 
-                        lore.clear();
-                        lore.add(lore0);
-                        lore.add(lore1);
-                        lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " " + CopperItems.getCurrentLang().getString("item_description.att_damage"));
-                        lore.add(lore3);
-                        im.setLore(lore);
-                        item.setItemMeta(im);
-                    }
+                    lore.clear();
+                    lore.add(lore0);
+                    lore.add(lore1);
+                    lore.add(ChatColor.DARK_GREEN + " " + finalDamageString + " " + CopperItems.getCurrentLang().getString("item_description.att_damage"));
+                    lore.add(lore3);
+                    im.setLore(lore);
+                    item.setItemMeta(im);
                 }
             }
         }
@@ -84,7 +80,7 @@ public class CopperItemsListener implements Listener {
     @EventHandler
     public void onEnchantCopper(InventoryClickEvent event) {
         if (event.getCurrentItem() != null) {
-            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasLocalizedName() && event.getCurrentItem().getItemMeta().getLocalizedName().contains("copper_")) {
+            if (event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasItemName() && event.getCurrentItem().getItemMeta().getItemName().contains("copper_")) {
                 ItemStack item = event.getCurrentItem();
                 ItemMeta im = item.getItemMeta();
                 if (item.getItemMeta().hasEnchants()) {
